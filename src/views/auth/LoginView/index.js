@@ -17,6 +17,7 @@ import {
   IconButton,
 } from '@material-ui/core';
 import TopBar from 'src/layouts/MainLayout/TopBar';
+import Footer from 'src/layouts/MainLayout/Footer';
 import Page from 'src/components/Page';
 import Logo from 'src/components/Logo';
 import useAuth from 'src/hooks/useAuth';
@@ -36,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    fontFamily: 'open sans,sans-serif'
   },
   cardContainer: {
     marginTop: "50px",
@@ -205,7 +207,7 @@ const LoginView = () => {
               justifyContent= "center"
               alignItems= "center"
             >
-              <p style={{textAlign : "center"}}>Pas encore membre Optedif ?<br></br>
+              <p style={{textAlign : "center", color: "#000"}}>Pas encore membre Optedif ?<br></br>
                   <a href="/register/" className={classes.textLink}>
                       Inscrivez-vous pour trouver<br></br>
                       un formateur ou un apprenant
@@ -216,6 +218,7 @@ const LoginView = () => {
           </CardContent>
         </Card>
       </Container>
+      <Footer />
     </Page>
   );
 };
