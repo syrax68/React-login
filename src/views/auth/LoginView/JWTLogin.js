@@ -67,7 +67,10 @@ const useStyles = makeStyles(() => ({
   buttonConnexion:{
     backgroundColor: "#0ba896",
     color: "#fff",
-    width: '100%'
+    width: '100%',
+    '&:hover':{
+      backgroundColor: '#286090',
+    }
   },
   textLink:{
     textDecoration: "none",
@@ -94,7 +97,7 @@ const JWTLogin = ({ className, ...rest }) => {
   const [state, setState] = React.useState({
     checkedG: true,
   });
-  const handleChange = (event) => {
+  const handleChangeCheckbox = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
   return (
@@ -134,6 +137,7 @@ const JWTLogin = ({ className, ...rest }) => {
         errors,
         handleBlur,
         handleSubmit,
+        handleChange,
         isSubmitting,
         touched,
         values
@@ -152,6 +156,11 @@ const JWTLogin = ({ className, ...rest }) => {
                 className={classes.input}
                 placeholder="Adresse e-mail"
                 inputProps={{ 'aria-label': 'Adresse e-mail' }}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                type="email"
+                value={values.email}
+                variant="outlined"
               />
             </div>
             <div className={classes.inputText}>
@@ -162,10 +171,23 @@ const JWTLogin = ({ className, ...rest }) => {
                 className={classes.input}
                 placeholder="Mot de passe"
                 inputProps={{ 'aria-label': 'Mot de passe' }}
+                error={Boolean(touched.password && errors.password)}
+                fullWidth
+                helperText={touched.password && errors.password}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                type="password"
+                value={values.password}
+                variant="outlined"
               />
             </div>
+            <Box mt={3}>
+              <FormHelperText error>
+                {errors.submit}
+              </FormHelperText>
+            </Box>
             <FormControlLabel
-              control={<GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />}
+              control={<GreenCheckbox checked={state.checkedG} onChange={handleChangeCheckbox} name="checkedG" />}
               label="Se souvenir de moi"
               className={classes.checkText}
             />
@@ -175,7 +197,15 @@ const JWTLogin = ({ className, ...rest }) => {
               <a className={classes.textLink} href="https://optedif-formation.fr/cgu/"> Conditions Générales</a>
             </p>
             <br></br>
-            <Button variant="contained" color="#0ba896" className={classes.buttonConnexion}>
+            <Button 
+              variant="contained" 
+              color="#0ba896" 
+              className={classes.buttonConnexion}
+              disabled={isSubmitting}
+              fullWidth
+              size="large"
+              type="submit"
+            >
               Connexion
             </Button>
             <Box 
@@ -186,68 +216,6 @@ const JWTLogin = ({ className, ...rest }) => {
             >
               <a className={classes.textLink} href="/resetting/request">J&#39;ai perdu mon mot de passe</a>
             </Box>
-            
-          {/* <TextField
-            error={Boolean(touched.email && errors.email)}
-            fullWidth
-            autoFocus
-            helperText={touched.email && errors.email}
-            label="Email Address"
-            margin="normal"
-            name="email"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            type="email"
-            value={values.email}
-            variant="outlined"
-          />
-          <TextField
-            error={Boolean(touched.password && errors.password)}
-            fullWidth
-            helperText={touched.password && errors.password}
-            label="Password"
-            margin="normal"
-            name="password"
-            onBlur={handleBlur}
-            onChange={handleChange}
-            type="password"
-            value={values.password}
-            variant="outlined"
-          />
-          {errors.submit && (
-            <Box mt={3}>
-              <FormHelperText error>
-                {errors.submit}
-              </FormHelperText>
-            </Box>
-          )}
-          <Box mt={2}>
-            <Button
-              color="secondary"
-              disabled={isSubmitting}
-              fullWidth
-              size="large"
-              type="submit"
-              variant="contained"
-            >
-              Log In
-            </Button>
-          </Box>
-          <Box mt={2}>
-            <Alert
-              severity="info"
-            >
-              <div>
-                Use
-                {' '}
-                <b>demo@devias.io</b>
-                {' '}
-                and password
-                {' '}
-                <b>Password123</b>
-              </div>
-            </Alert>
-          </Box> */}
         </form>
       )}
     </Formik>

@@ -66,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
   },
   blocBottom:{
     background: `#383737 url(${process.env.PUBLIC_URL+'/static/images/covers/background.png'})`,
-    borderTop: '1px solid #000'
+    borderTop: '1px solid #000',
+    minHeight: '40px'
   }
 }));
 const ListItemLink = (props) => {

@@ -214,7 +214,6 @@ const LoginView = () => {
                   </a>
               </p>
             </Box>
-            
           </CardContent>
         </Card>
       </Container>
