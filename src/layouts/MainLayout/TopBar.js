@@ -101,10 +101,10 @@ const useStyles = makeStyles((theme) => ({
       '&:after':{
         border:'none'
       },
-      '& > div > input' : {
+      '& > input' : {
         width : '100%',
         height: 55,
-        color: '#555',
+        color: '#7c7c7c',
         '&:hover':{
           border: 'none'
         },
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
     width : '80%',
     borderLeft : '1px solid #ececec',
     borderRight: '1px solid #ececec',
-    padding: '24px 20px'
+    padding: '5px 20px'
   },
   textLogo: {
     color: '#0e5a73',
@@ -197,7 +197,15 @@ const TopBar = ({ className, ...rest }) => {
                   minWidth = "350px"
                   paddingRight = "20px"
                 >
-                  <Logo />
+                  <Link
+                    variant="body1"
+                    color="inherit"
+                    to="/"
+                    component={RouterLink}
+                  >
+                    <Logo />
+                  </Link>
+                  
                   <Box
                     alignItems="center"
                     display="block"
