@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
   blocImageCover: {
     width: '100%',
-    height: '100%',
+    height: '250px',
     backgroundImage: `url(${process.env.PUBLIC_URL+'/static/images/covers/cover.jpg'})`,
     backgroundAttachment: 'fixed',
     backgroundPosition: '50%',
