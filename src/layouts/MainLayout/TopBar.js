@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -9,8 +9,8 @@ import {
   Link,
   Typography,
   makeStyles,
-  Container,
   TextField,
+  Collapse
 } from '@material-ui/core';
 import Logo from 'src/components/Logo';
 import SearchIcon from '@material-ui/icons/Search';
@@ -20,13 +20,20 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ImportContactsTwoToneIcon from '@material-ui/icons/ImportContactsTwoTone';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
+import ViewListIcon from '@material-ui/icons/ViewList';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import Hidden from '@material-ui/core/Hidden';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.background.default
+    backgroundColor: theme.palette.background.default,
   },
   logo: {
-    marginRight: theme.spacing(2)
+    marginTop:"15px",
+    [theme.breakpoints.down('sm')]: {
+      width: 50
+    }, 
   },
   link: {
     fontWeight: theme.typography.fontWeightMedium,
@@ -40,10 +47,28 @@ const useStyles = makeStyles((theme) => ({
     position: 'fixed',
     width: '100%',
     zIndex: '99',
-    height: 80
+    [theme.breakpoints.down('sm')]: {
+      height: 45,
+      minHeight: 45,
+      padding: 0
+    },
+    [theme.breakpoints.up('md')]: {
+      height: 70
+    },
   },
   bannerChip: {
     marginRight: theme.spacing(2)
+  },
+  blocIcon:{
+    alignItems:"center",
+    display:"flex",
+    textAlign:"center",
+    [theme.breakpoints.down('sm')]: {
+      paddingRight : "10px"
+    },
+    [theme.breakpoints.up('md')]: {
+      paddingRight : "20px"
+    },
   },
   methodIcon: {
     height: 30,
@@ -90,7 +115,9 @@ const useStyles = makeStyles((theme) => ({
       },
       '& > input' : {
         width : '100%',
-        height: 55,
+        [theme.breakpoints.up('md')]: {
+          height: 55,
+        },     
         color: '#7c7c7c',
         '&:hover':{
           border: 'none'
@@ -114,10 +141,16 @@ const useStyles = makeStyles((theme) => ({
     color: "#555",
     width : '80%',
     borderLeft : '1px solid #ececec',
-    borderRight: '1px solid #ececec',
-    padding: '5px 20px'
+    borderRight: '1px solid #ececec',   
+    [theme.breakpoints.down('sm')]: {
+      padding: '7px 10px'
+    },
+    [theme.breakpoints.up('md')]: {
+      padding: '0px 20px'
+    },
   },
   textLogo: {
+    minWidth: "300px",
     color: '#0e5a73',
     textTransform: 'uppercase',
     fontFamily: 'font-family: sansation_lightregular,Helvetica Neue,Helvetica,Arial,sans-serif',
@@ -126,7 +159,10 @@ const useStyles = makeStyles((theme) => ({
   menuRight : {
     display: 'flex',
     justifyContent: 'center',
-    textAlign: 'center'
+    textAlign: 'center',
+  },
+  menuRightCollaps:{
+    background: "#fff"
   },
   buttonContact :{
     background: 'rgb(11, 168, 150)',
@@ -143,6 +179,12 @@ const useStyles = makeStyles((theme) => ({
   listeItem: {
     margin: '0 10px',
     color: "#555",
+    [theme.breakpoints.down('md')]: {
+      padding: '0px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 5px',
+    },
     '&:hover':{
       color : '#13c6b3',
       borderBottom : '5px solid #13c6b3',
@@ -162,7 +204,11 @@ const useStyles = makeStyles((theme) => ({
 
 const TopBar = ({ className, ...rest }) => {
   const classes = useStyles();
+  const [openMenu, setOpenMenu] = useState(false);
 
+  const handleMenuOpen = () => {
+    setOpenMenu((prev) => !prev);
+  };
   return (
     <AppBar
       className={clsx(classes.root, className)}
@@ -170,49 +216,54 @@ const TopBar = ({ className, ...rest }) => {
       {...rest}
     >
         <Toolbar className={classes.banner}>
-            <Container maxWidth="xl">
               <Box
                 alignItems="center"
                 display="flex"
                 justifyContent="flex-start"
+                width = "100%"
               >
                 <Box
-                  alignItems="center"
-                  display="flex"
-                  textAlign="center"
-                  width = "30%"
-                  minWidth = "350px"
-                  paddingRight = "20px"
+                  className={classes.blocIcon}
                 >
+                  <Hidden smUp>
+                    <ToggleButton value="list" aria-label="list" style={{color:"#555"}} onClick={handleMenuOpen}>
+                      <ViewListIcon />
+                    </ToggleButton>
+                  </Hidden>
+                  
+                  {/* <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <HorizontalSplitOutlinedIcon/>
+                  </button> */}
                   <Link
                     variant="body1"
                     color="inherit"
                     to="/"
                     component={RouterLink}
                   >
-                    <Logo />
+                    <Logo className={classes.logo}/>
                   </Link>
-                  
-                  <Box
-                    alignItems="center"
-                    display="block"
-                    textAlign="center"
-                  >
-                    <Typography
-                      color="textPrimary"
-                      gutterBottom
-                      variant="h3"
-                      className={classes.textLogo}
-                    >
-                      Optédif formation
-                    </Typography>
-                    <Typography
-                      variant="h4"
-                      color="textSecondary"
-                    >
-                      Apprendre autrement
-                    </Typography>
-                  </Box>
+                  <Hidden mdDown>
+                      <Box
+                        alignItems="center"
+                        display="block"
+                        textAlign="center"
+                      >
+                        <Typography
+                          color="textPrimary"
+                          gutterBottom
+                          variant="h3"
+                          className={classes.textLogo}
+                        >
+                          Optédif formation
+                        </Typography>
+                        <Typography
+                          variant="h4"
+                          color="textSecondary"
+                        >
+                          Apprendre autrement
+                        </Typography>
+                      </Box>
+                  </Hidden>
                 </Box>
                 <div className={classes.blocSearch}>
                   <Box
@@ -228,71 +279,67 @@ const TopBar = ({ className, ...rest }) => {
                     />
                   </Box>
                 </div>
-                <div>
-                <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRight}>
-                  <ListItem button className={classes.listeItem}>
-                    <ImportContactsTwoToneIcon/><ListItemText primary="Formations" />
-                  </ListItem>                
-                  <ListItem button className={classes.listeItem}>
-                    <EmailOutlinedIcon/>
-                    <ListItemText primary="Contact" />     
-                  </ListItem> 
-                  <Link
-                    component={RouterLink}
-                    to="/app"
-                    underline="none"
-                    variant="body2"
-                  >
+                <Hidden smDown>
+                  <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRight}>
                     <ListItem button className={classes.listeItem}>
-                      <PersonOutlineRoundedIcon/><ListItemText primary="Inscription/Connexion" />
-                    </ListItem>
-                  </Link>
-                </List>
-                </div>
+                      <ImportContactsTwoToneIcon/><ListItemText primary="Formations" />
+                    </ListItem>                
+                    <ListItem button className={classes.listeItem}>
+                      <EmailOutlinedIcon/>
+                      <ListItemText primary="Contact" />     
+                    </ListItem> 
+                    <Link
+                      component={RouterLink}
+                      to="/app"
+                      underline="none"
+                      variant="body2"
+                    >
+                      <ListItem button className={classes.listeItem}>
+                        <PersonOutlineRoundedIcon/><ListItemText primary="Inscription/Connexion" />
+                      </ListItem>
+                    </Link>
+                  </List>
+                </Hidden>
+                <Hidden mdUp>
+                  <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRight}>               
+                    <ListItem button className={classes.listeItem}>
+                      <EmailOutlinedIcon/>    
+                    </ListItem> 
+                    <Link
+                      component={RouterLink}
+                      to="/app"
+                      underline="none"
+                      variant="body2"
+                    >
+                      <ListItem button className={classes.listeItem}>
+                        <PersonOutlineRoundedIcon/>
+                      </ListItem>
+                    </Link>
+                  </List>
+                </Hidden>
               </Box>
-            </Container>
         </Toolbar>
-        {/* <Hidden mdDown>
-          <Typography
-            variant="caption"
-            color="textSecondary"
-          >
-            Version
-            {' '}
-            {APP_VERSION}
-          </Typography>
-        </Hidden>
-        <Box flexGrow={1} />
-        <Link
-          className={classes.link}
-          color="textSecondary"
-          component={RouterLink}
-          to="/app"
-          underline="none"
-          variant="body2"
-        >
-          Dashboard
-        </Link>
-        <Link
-          className={classes.link}
-          color="textSecondary"
-          component={RouterLink}
-          to="/docs"
-          underline="none"
-          variant="body2"
-        >
-          Documentation
-        </Link>
-        <Divider className={classes.divider} />
-        <Button
-          color="secondary"
-          component="a"
-          href="https://material-ui.com/store/items/devias-kit-pro"
-          variant="contained"
-          size="small"
-        >
-          Get the kit
-        </Button> */}
+        <Collapse in={openMenu} style={{marginTop:"44px"}}>
+          <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRightCollaps}>
+            <ListItem button className={classes.listeItem}>
+              <ImportContactsTwoToneIcon/><ListItemText primary="Formations" />
+            </ListItem>                
+            <ListItem button className={classes.listeItem}>
+              <EmailOutlinedIcon/>
+              <ListItemText primary="Contact" />     
+            </ListItem> 
+            <Link
+              component={RouterLink}
+              to="/app"
+              underline="none"
+              variant="body2"
+            >
+              <ListItem button className={classes.listeItem}>
+                <PersonOutlineRoundedIcon/><ListItemText primary="Inscription/Connexion" />
+              </ListItem>
+            </Link>
+          </List>
+        </Collapse>
     </AppBar>
   );
 };
