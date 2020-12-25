@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
@@ -21,14 +21,16 @@ import {
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import wait from 'src/utils/wait';
 import countries from './countries';
+import gender from './gender';
+import * as locales from '@material-ui/core/locale';
 
 const useStyles = makeStyles(() => ({
   root: {}
 }));
-
 const GeneralSettings = ({ className, user, ...rest }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
+  const [locale, setLocale] = useState('enUS');
 
   return (
     <Formik
@@ -37,6 +39,8 @@ const GeneralSettings = ({ className, user, ...rest }) => {
         canHire: user.canHire || false,
         city: user.city || '',
         country: user.country || '',
+        birthday: user.birthday || '',
+        gender: user.gender || '',
         email: user.email || '',
         isPublic: user.isPublic || false,
         name: user.name || '',
@@ -48,6 +52,8 @@ const GeneralSettings = ({ className, user, ...rest }) => {
         canHire: Yup.bool(),
         city: Yup.string().max(255),
         country: Yup.string().max(255),
+        birthday: Yup.date(),
+        gender: Yup.string().max(255),
         email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
         isPublic: Yup.bool(),
         name: Yup.string().max(255).required('Name is required'),
@@ -203,6 +209,61 @@ const GeneralSettings = ({ className, user, ...rest }) => {
                     onChange={handleChange}
                     value={values.city}
                     variant="outlined"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  md={6}
+                  xs={12}
+                >
+                  <TextField
+                    error={Boolean(touched.birthday && errors.birthday)}
+                    fullWidth
+                    helperText={touched.birthday && errors.birthday}
+                    label="Birthday"
+                    name="birthday"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={values.birthday}
+                    variant="outlined"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  md={6}
+                  xs={12}
+                >
+                  <Autocomplete
+                    getOptionLabel={(option) => option.text}
+                    options={gender}
+                    renderInput={(params) => (
+                      <TextField
+                        fullWidth
+                        label="Gender"
+                        name="gender"
+                        onChange={handleChange}
+                        variant="outlined"
+                        {...params}
+                      />
+                    )}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  md={12}
+                  xs={12}
+                >
+                  <Autocomplete
+                    options={Object.keys(locales)}
+                    getOptionLabel={(key) => `${key.substring(0, 2)}-${key.substring(2, 4)}`}
+                    value={locale}
+                    disableClearable
+                    onChange={(event, newValue) => {
+                      setLocale(newValue);
+                    }}
+                    renderInput={(params) => (
+                      <TextField {...params} label="Language" variant="outlined" fullWidth />
+                    )}
                   />
                 </Grid>
                 <Grid

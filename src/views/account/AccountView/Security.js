@@ -22,18 +22,22 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Security = ({ className, ...rest }) => {
+const Security = ({ className, user, ...rest }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-
+  console.log(user);
   return (
     <Formik
       initialValues={{
+        lastPassword: '',
         password: '',
         passwordConfirm: '',
         submit: null
       }}
       validationSchema={Yup.object().shape({
+        lastPassword: Yup.string()
+          .oneOf([user.password, null], 'Passwords must match')
+          .required('Required'),
         password: Yup.string()
           .min(7, 'Must be at least 7 characters')
           .max(255)
@@ -86,6 +90,25 @@ const Security = ({ className, ...rest }) => {
                 container
                 spacing={3}
               >
+                <Grid
+                  item
+                  md={4}
+                  sm={6}
+                  xs={12}
+                >
+                  <TextField
+                    error={Boolean(touched.lastPassword && errors.lastPassword)}
+                    fullWidth
+                    helperText={touched.lastPassword && errors.lastPassword}
+                    label="Last Password"
+                    name="lastPassword"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    type="password"
+                    value={values.lastPassword}
+                    variant="outlined"
+                  />
+                </Grid>
                 <Grid
                   item
                   md={4}
@@ -156,7 +179,8 @@ const Security = ({ className, ...rest }) => {
 };
 
 Security.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  user: PropTypes.object.isRequired
 };
 
 export default Security;

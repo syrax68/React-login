@@ -51,7 +51,8 @@ mock.onPost('/api/account/login').reply(async (config) => {
         avatar: user.avatar,
         email: user.email,
         name: user.name,
-        tier: user.tier
+        tier: user.tier,
+        password: user.password,
       }
     }];
   } catch (err) {
@@ -130,7 +131,8 @@ mock.onGet('/api/account/me').reply((config) => {
         avatar: user.avatar,
         email: user.email,
         name: user.name,
-        tier: user.tier
+        tier: user.tier,
+        password: user.password,
       }
     }];
   } catch (err) {
@@ -139,8 +141,36 @@ mock.onGet('/api/account/me').reply((config) => {
   }
 });
 
-mock.onGet('/api/account/settings').reply(200, {
-  settings: {}
+mock.onGet('/api/account/settings').reply((config) => {
+  try {
+    const { Authorization } = config.headers;
+
+    if (!Authorization) {
+      return [401, { message: 'Authorization token missing' }];
+    }
+  
+    const accessToken = Authorization.split(' ')[1];
+    const { userId } = jwt.verify(accessToken, JWT_SECRET);  
+    const user = users.find((_user) => _user.id === userId);
+
+    if (!user) {
+      return [401, { message: 'Invalid authorization token' }];
+    }
+
+    return [200, {
+      user: {
+        id: user.id,
+        avatar: user.avatar,
+        email: user.email,
+        name: user.name,
+        tier: user.tier,
+        password: user.password,
+      }
+    }];
+  } catch (err) {
+    console.error(err);
+    return [500, { message: 'Internal server error' }];
+  }
 });
 
 mock.onGet('/api/account/subscription').reply(200, {
