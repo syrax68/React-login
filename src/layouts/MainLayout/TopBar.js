@@ -5,19 +5,13 @@ import PropTypes from 'prop-types';
 import {
   AppBar,
   Box,
-  Button,
-  Divider,
   Toolbar,
   Link,
   Typography,
   makeStyles,
-  Chip,
   Container,
   TextField,
-  InputBase,
-  IconButton,
 } from '@material-ui/core';
-import { APP_VERSION } from 'src/constants';
 import Logo from 'src/components/Logo';
 import SearchIcon from '@material-ui/icons/Search';
 import List from '@material-ui/core/List';
@@ -26,7 +20,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ImportContactsTwoToneIcon from '@material-ui/icons/ImportContactsTwoTone';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
-import HomeIcon from '@material-ui/icons/Home'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,12 +33,6 @@ const useStyles = makeStyles((theme) => ({
     '& + &': {
       marginLeft: theme.spacing(2)
     }
-  },
-  divider: {
-    width: 1,
-    height: 32,
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2)
   },
   banner: {
     backgroundColor: 'white',

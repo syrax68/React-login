@@ -8,14 +8,10 @@ import {
   Button,
   Divider,
   FormHelperText,
-  TextField,
   makeStyles,
-  Paper,
   InputBase,
   IconButton,
-  Typography
 } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
 import useAuth from 'src/hooks/useAuth';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
@@ -23,7 +19,6 @@ import LockIcon from '@material-ui/icons/Lock';
 import { green } from '@material-ui/core/colors';
 import { withStyles } from '@material-ui/core/styles';
 import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const useStyles = makeStyles(() => ({

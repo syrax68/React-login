@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
-  AppBar,
   Toolbar,
   makeStyles,
   Paper,
@@ -70,9 +68,6 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '40px'
   }
 }));
-const ListItemLink = (props) => {
-    return <ListItem button component="a" {...props} />;
-}
   
 const Footer = ({ className, ...rest }) => {
   const classes = useStyles();

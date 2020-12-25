@@ -1,36 +1,20 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
 import {
   Box,
   Card,
   CardContent,
-  Chip,
   Container,
   Divider,
-  Link,
-  Tooltip,
   Typography,
   makeStyles,
-  TextField,
-  Paper,
-  InputBase,
-  IconButton,
 } from '@material-ui/core';
 import TopBar from 'src/layouts/MainLayout/TopBar';
 import Footer from 'src/layouts/MainLayout/Footer';
 import Page from 'src/components/Page';
-import Logo from 'src/components/Logo';
 import useAuth from 'src/hooks/useAuth';
 import Auth0Login from './Auth0Login';
 import FirebaseAuthLogin from './FirebaseAuthLogin';
 import JWTLogin from './JWTLogin';
-import SearchIcon from '@material-ui/icons/Search';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
-import ImportContactsTwoToneIcon from '@material-ui/icons/ImportContactsTwoTone';
-import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
-import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import HomeIcon from '@material-ui/icons/Home';
 
 const useStyles = makeStyles((theme) => ({
@@ -106,7 +90,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPositionY: '50px',
-    height: '250px'
   },
   blocImageForm: {
     display: 'flex',
