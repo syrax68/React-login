@@ -14,6 +14,7 @@ import General from './General';
 import Subscription from './Subscription';
 import Notifications from './Notifications';
 import Security from './Security';
+import Organisations from './Organisations';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -27,15 +28,15 @@ const useStyles = makeStyles((theme) => ({
 
 const AccountView = () => {
   const classes = useStyles();
-  const [currentTab, setCurrentTab] = useState('general');
+  const [currentTab, setCurrentTab] = useState('account');
   const { user } = useAuth();
 
   const tabs = [
-    { value: 'general', label: 'General' },
+    { value: 'account', label: 'Account' },
     { value: 'subscription', label: 'Subscription' },
     { value: 'organisations', label: 'Organisations' },
-    { value: 'profilFormateur', label: 'Profil formateur' },
-    { value: 'demandeFormation', label: 'Demandes de formation' },
+    { value: 'trainerProfile', label: 'Trainer Profile' },
+    { value: 'orders', label: 'Orders' },
     { value: 'notifications', label: 'Notifications' },
     { value: 'security', label: 'Security' }
     
@@ -71,11 +72,11 @@ const AccountView = () => {
         </Box>
         <Divider />
         <Box mt={3}>
-          {currentTab === 'general' && <General />}
+          {currentTab === 'account' && <General />}
           {currentTab === 'subscription' && <Subscription />}
-          {currentTab === 'organisations' && <Subscription />}
-          {currentTab === 'profilFormateur' && <Security user={user}/>}
-          {currentTab === 'demandeFormation' && <Security user={user}/>}
+          {currentTab === 'organisations' && <Organisations />}
+          {currentTab === 'trainerProfile' && <Security user={user}/>}
+          {currentTab === 'orders' && <Security user={user}/>}
           {currentTab === 'notifications' && <Notifications />}
           {currentTab === 'security' && <Security user={user}/>}
         </Box>

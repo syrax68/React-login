@@ -7,7 +7,6 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
-  Chip,
   Divider,
   Drawer,
   Hidden,
@@ -20,22 +19,11 @@ import {
 import ReceiptIcon from '@material-ui/icons/ReceiptOutlined';
 import {
   Briefcase as BriefcaseIcon,
-  Calendar as CalendarIcon,
   ShoppingCart as ShoppingCartIcon,
   Folder as FolderIcon,
   BarChart as BarChartIcon,
-  Lock as LockIcon,
-  UserPlus as UserPlusIcon,
-  AlertCircle as AlertCircleIcon,
-  Trello as TrelloIcon,
-  User as UserIcon,
-  Layout as LayoutIcon,
-  Edit as EditIcon,
-  DollarSign as DollarSignIcon,
-  Mail as MailIcon,
-  MessageCircle as MessageCircleIcon,
+  BarChart2 as BarChartIcon2,
   PieChart as PieChartIcon,
-  Share2 as ShareIcon,
   Users as UsersIcon
 } from 'react-feather';
 import Logo from 'src/components/Logo';
@@ -47,14 +35,19 @@ const sections = [
     subheader: 'Reports',
     items: [
       {
-        title: 'Dashboard',
+        title: 'Client Dashboard',
         icon: PieChartIcon,
         href: '/app/reports/dashboard'
       },
       {
-        title: 'Dashboard Alternative',
+        title: 'Seller Dashboard',
         icon: BarChartIcon,
-        href: '/app/reports/dashboard-alternative'
+        href: '/app/reports/dashboard-seller'
+      },
+      {
+        title: 'Trainer Dashboard',
+        icon: BarChartIcon2,
+        href: '/app/reports/dashboard-trainer'
       }
     ]
   },
@@ -124,12 +117,7 @@ const sections = [
             href: '/app/management/invoices/1'
           }
         ]
-      }
-    ]
-  },
-  {
-    subheader: 'Applications',
-    items: [
+      },
       {
         title: 'Projects Platform',
         href: '/app/projects',
@@ -150,141 +138,15 @@ const sections = [
           {
             title: 'View Project',
             href: '/app/projects/1'
-          }
-        ]
-      },
-      {
-        title: 'Social Platform',
-        href: '/app/social',
-        icon: ShareIcon,
-        items: [
-          {
-            title: 'Profile',
-            href: '/app/social/profile'
           },
           {
-            title: 'Feed',
-            href: '/app/social/feed'
+            title: 'Calendar',
+            href: '/app/calendar',
           }
         ]
       },
-      {
-        title: 'Kanban',
-        href: '/app/kanban',
-        icon: TrelloIcon
-      },
-      {
-        title: 'Mail',
-        href: '/app/mail',
-        icon: MailIcon
-      },
-      {
-        title: 'Chat',
-        href: '/app/chat',
-        icon: MessageCircleIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
-      },
-      {
-        title: 'Calendar',
-        href: '/app/calendar',
-        icon: CalendarIcon,
-        info: () => (
-          <Chip
-            color="secondary"
-            size="small"
-            label="Updated"
-          />
-        )
-      }
     ]
   },
-  {
-    subheader: 'Auth',
-    items: [
-      {
-        title: 'Login',
-        href: '/login-unprotected',
-        icon: LockIcon
-      },
-      {
-        title: 'Register',
-        href: '/register-unprotected',
-        icon: UserPlusIcon
-      }
-    ]
-  },
-  {
-    subheader: 'Pages',
-    items: [
-      {
-        title: 'Account',
-        href: '/app/account',
-        icon: UserIcon
-      },
-      {
-        title: 'Error',
-        href: '/404',
-        icon: AlertCircleIcon
-      },
-      {
-        title: 'Pricing',
-        href: '/pricing',
-        icon: DollarSignIcon
-      }
-    ]
-  },
-  {
-    subheader: 'Extra',
-    items: [
-      {
-        title: 'Charts',
-        href: '/app/extra/charts',
-        icon: BarChartIcon,
-        items: [
-          {
-            title: 'Apex Charts',
-            href: '/app/extra/charts/apex'
-          }
-        ]
-      },
-      {
-        title: 'Forms',
-        href: '/app/extra/forms',
-        icon: EditIcon,
-        items: [
-          {
-            title: 'Formik',
-            href: '/app/extra/forms/formik'
-          },
-          {
-            title: 'Redux Forms',
-            href: '/app/extra/forms/redux'
-          },
-        ]
-      },
-      {
-        title: 'Editors',
-        href: '/app/extra/editors',
-        icon: LayoutIcon,
-        items: [
-          {
-            title: 'DraftJS Editor',
-            href: '/app/extra/editors/draft-js'
-          },
-          {
-            title: 'Quill Editor',
-            href: '/app/extra/editors/quill'
-          }
-        ]
-      }
-    ]
-  }
 ];
 
 function renderNavItems({
@@ -455,29 +317,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
               })}
             </List>
           ))}
-        </Box>
-        <Divider />
-        <Box p={2}>
-          <Box
-            p={2}
-            borderRadius="borderRadius"
-            bgcolor="background.dark"
-          >
-            <Typography
-              variant="h6"
-              color="textPrimary"
-            >
-              Need Help?
-            </Typography>
-            <Link
-              variant="subtitle1"
-              color="secondary"
-              component={RouterLink}
-              to="/docs"
-            >
-              Check our docs
-            </Link>
-          </Box>
         </Box>
       </PerfectScrollbar>
     </Box>

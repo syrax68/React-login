@@ -23,8 +23,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
-  Edit as EditIcon,
-  ArrowRight as ArrowRightIcon
+  Edit as EditIcon, 
 } from 'react-feather';
 import Label from 'src/components/Label';
 import GenericMoreButton from 'src/components/GenericMoreButton';
@@ -153,7 +152,7 @@ const Results = ({ className, orders, ...rest }) => {
                   <TableCell>
                     Status
                   </TableCell>
-                  <TableCell align="right">
+                  <TableCell>
                     Actions
                   </TableCell>
                 </TableRow>
@@ -195,18 +194,13 @@ const Results = ({ className, orders, ...rest }) => {
                       <TableCell>
                         {getStatusLabel(order.status)}
                       </TableCell>
-                      <TableCell align="right">
-                        <IconButton>
-                          <SvgIcon fontSize="small">
-                            <EditIcon />
-                          </SvgIcon>
-                        </IconButton>
+                      <TableCell>
                         <IconButton
                           component={RouterLink}
                           to="/app/management/orders/1"
                         >
                           <SvgIcon fontSize="small">
-                            <ArrowRightIcon />
+                            <EditIcon />
                           </SvgIcon>
                         </IconButton>
                       </TableCell>

@@ -226,8 +226,13 @@ const routes = [
       },
       {
         exact: true,
-        path: '/app/reports/dashboard-alternative',
+        path: '/app/reports/dashboard-seller',
         component: lazy(() => import('src/views/reports/DashboardAlternativeView'))
+      },
+      {
+        exact: true,
+        path: '/app/reports/dashboard-trainer',
+        component: lazy(() => import('src/views/reports/DashboardTrainerView'))
       },
       {
         exact: true,
