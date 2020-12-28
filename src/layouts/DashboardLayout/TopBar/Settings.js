@@ -45,7 +45,7 @@ const Settings = () => {
     responsiveFontSizes: settings.responsiveFontSizes,
     theme: settings.theme
   });
-
+  console.log(settings);
   const handleOpen = () => {
     setOpen(true);
   };

@@ -15,6 +15,7 @@ import Subscription from './Subscription';
 import Notifications from './Notifications';
 import Security from './Security';
 import Organisations from './Organisations';
+import Trainer from './Trainer';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +76,7 @@ const AccountView = () => {
           {currentTab === 'account' && <General />}
           {currentTab === 'subscription' && <Subscription />}
           {currentTab === 'organisations' && <Organisations />}
-          {currentTab === 'trainerProfile' && <Security user={user}/>}
+          {currentTab === 'trainerProfile' && <Trainer />}
           {currentTab === 'orders' && <Security user={user}/>}
           {currentTab === 'notifications' && <Notifications />}
           {currentTab === 'security' && <Security user={user}/>}

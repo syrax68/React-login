@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   popover: {
     width: 200
+  },
+  textName:{
+    color: '#888'
   }
 }));
 
@@ -74,7 +77,7 @@ const Account = () => {
         <Hidden smDown>
           <Typography
             variant="h6"
-            color="inherit"
+            className={classes.textName}
           >
             {user.name}
           </Typography>

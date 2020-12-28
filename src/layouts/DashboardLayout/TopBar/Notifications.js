@@ -67,7 +67,7 @@ const Notifications = () => {
     <>
       <Tooltip title="Notifications">
         <IconButton
-          color="inherit"
+          color="#888"
           ref={ref}
           onClick={handleOpen}
         >

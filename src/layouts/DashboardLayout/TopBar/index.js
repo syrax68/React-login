@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: 'none',
       backgroundColor: theme.palette.primary.main
     } : {},
-    ...theme.name === THEMES.ONE_DARK ? {
+    ...theme.name === THEMES.LIGHT ? {
       backgroundColor: theme.palette.background.default
     } : {}
   },
@@ -48,7 +48,7 @@ const TopBar = ({
       <Toolbar className={classes.toolbar}>
         <Hidden lgUp>
           <IconButton
-            color="inherit"
+            color="#888"
             onClick={onMobileNavOpen}
           >
             <SvgIcon fontSize="small">
