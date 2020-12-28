@@ -25,8 +25,8 @@ import wait from 'src/utils/wait';
 import time from './Helpers/Time';
 import computerSkill from './Helpers/ComputerSkill';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import ComponentExp from './Components/ComponentCert';
-import ComponentCert from './Components/ComponentExp';
+import ComponentExp from './Components/ComponentExp';
+import ComponentCert from './Components/ComponentCert';
 
 const useStyles = makeStyles(() => ({
   root: {},
