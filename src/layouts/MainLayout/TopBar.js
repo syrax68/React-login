@@ -190,7 +190,24 @@ const useStyles = makeStyles((theme) => ({
       borderBottom : '5px solid #13c6b3',
       transform: 'scaleX(1)',
       transitionDelay: '0s'
-    }
+    },
+  },
+  listeItemActive:{
+    color : '#fff',
+    border : '0px',
+    background: 'rgb(11, 168, 150)',
+    borderRadius: '5px',
+    margin: '0 10px',
+    [theme.breakpoints.down('md')]: {
+      padding: '0px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 5px',
+    },
+    '&:hover':{
+      color : '#13c6b3',
+      background: 'rgb(11, 168, 150)',
+    },
   },
   textLink:{
     textDecoration: "none",
@@ -202,10 +219,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TopBar = ({ className, ...rest }) => {
+const TopBar = ({activeaccount,activecontact,activeformation,className, ...rest }) => {
   const classes = useStyles();
   const [openMenu, setOpenMenu] = useState(false);
-
+  console.log(activeaccount);
   const handleMenuOpen = () => {
     setOpenMenu((prev) => !prev);
   };
@@ -281,10 +298,10 @@ const TopBar = ({ className, ...rest }) => {
                 </div>
                 <Hidden smDown>
                   <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRight}>
-                    <ListItem button className={classes.listeItem}>
+                    <ListItem button className={activeformation? classes.listeItemActive : classes.listeItem}>
                       <ImportContactsTwoToneIcon/><ListItemText primary="Formations" />
                     </ListItem>                
-                    <ListItem button className={classes.listeItem}>
+                    <ListItem button className={activecontact? classes.listeItemActive : classes.listeItem}>
                       <EmailOutlinedIcon/>
                       <ListItemText primary="Contact" />     
                     </ListItem> 
@@ -294,7 +311,7 @@ const TopBar = ({ className, ...rest }) => {
                       underline="none"
                       variant="body2"
                     >
-                      <ListItem button className={classes.listeItem}>
+                      <ListItem button className={activeaccount? classes.listeItemActive: classes.listeItem}>
                         <PersonOutlineRoundedIcon/><ListItemText primary="Inscription/Connexion" />
                       </ListItem>
                     </Link>
@@ -321,10 +338,10 @@ const TopBar = ({ className, ...rest }) => {
         </Toolbar>
         <Collapse in={openMenu} style={{marginTop:"44px"}}>
           <List component="nav" aria-label="secondary mailbox folders" className={classes.menuRightCollaps}>
-            <ListItem button className={classes.listeItem}>
+            <ListItem button className={activeformation? classes.listeItemActive : classes.listeItem}>
               <ImportContactsTwoToneIcon/><ListItemText primary="Formations" />
             </ListItem>                
-            <ListItem button className={classes.listeItem}>
+            <ListItem button className={activecontact? classes.listeItemActive : classes.listeItem}>
               <EmailOutlinedIcon/>
               <ListItemText primary="Contact" />     
             </ListItem> 
@@ -334,7 +351,7 @@ const TopBar = ({ className, ...rest }) => {
               underline="none"
               variant="body2"
             >
-              <ListItem button className={classes.listeItem}>
+              <ListItem button className={activeaccount? classes.listeItemActive: classes.listeItem}>
                 <PersonOutlineRoundedIcon/><ListItemText primary="Inscription/Connexion" />
               </ListItem>
             </Link>

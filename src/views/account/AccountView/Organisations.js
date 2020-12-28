@@ -42,12 +42,14 @@ const Organisations = ({ className, ...rest }) => {
         isPublic: false,
         social: '',
         vat: '',
+        logo: '',
         organisationAndMyTraining: '',
         submit: null
       }}
       validationSchema={Yup.object().shape({
         organisationAndMyTraining: Yup.string(),
         city: Yup.string().max(255),
+        logo: Yup.string().max(255),
         address: Yup.string().max(255),
         organisationAndMe: Yup.string(),
         registration: Yup.string().max(255).required('Registration number is required'),
@@ -111,12 +113,13 @@ const Organisations = ({ className, ...rest }) => {
                         Logo
                     </Typography><br></br>
                     <TextField
+                        accept="image/*"
                         fullWidth
-                        name="social"
+                        name="logo"
                         type="file"
                         onBlur={handleBlur}
                         onChange={handleChangeLogo}
-                        value={values.social}
+                        value={values.logo}
                         variant="outlined"
                     />
                 </Grid>

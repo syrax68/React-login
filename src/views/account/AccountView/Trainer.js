@@ -23,8 +23,10 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import wait from 'src/utils/wait';
 import time from './Helpers/Time';
-import fullTime from './Helpers/FullTime';
+import computerSkill from './Helpers/ComputerSkill';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import ComponentExp from './Components/ComponentCert';
+import ComponentCert from './Components/ComponentExp';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -32,249 +34,69 @@ const useStyles = makeStyles(() => ({
     display: 'none',
   },
 }));
-const addCertification = (values,handleBlur,handleChange, errors, touched) => {
-    return(
-        <>
-            <Grid
-            item
-            md={3}
-            xs={12}
-            >
-                <TextField
-                    error={Boolean(touched.dateCert && errors.dateCert)}
-                    fullWidth
-                    helperText={touched.dateCert && errors.dateCert}
-                    label="Date"
-                    name="dateCert"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.dateCert}
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid
-            item
-            md={3}
-            xs={12}
-            >
-                <TextField
-                    error={Boolean(touched.durationCert && errors.durationCert)}
-                    fullWidth
-                    helperText={touched.durationCert && errors.durationCert}
-                    label="Duration"
-                    name="durationCert"
-                    onBlur={handleBlur}
-                    onChange={handleChange}                               
-                    value={values.durationCert}
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid
-            item
-            md={3}
-            xs={12}
-            >
-                <Autocomplete
-                    getOptionLabel={(option) => option.text}
-                    options={fullTime}
-                    renderInput={(params) => (
-                    <TextField
-                        error={Boolean(touched.timeCert && errors.timeCert)}
-                        fullWidth
-                        helperText={touched.timeCert && errors.timeCert}
-                        label="Time"
-                        name="timeCert"
-                        onChange={handleChange}
-                        variant="outlined"
-                        {...params}
-                    />
-                    )}
-                />
-            </Grid>
-            <Grid
-            item
-            md={3}
-            xs={12}
-            >
-                <TextField
-                    error={Boolean(touched.titleCert && errors.titleCert)}
-                    fullWidth
-                    helperText={touched.titleCert && errors.titleCert}
-                    label="entitled"
-                    name="titleCert"
-                    onBlur={handleBlur}
-                    onChange={handleChange}                               
-                    value={values.titleCert}
-                    variant="outlined"
-                    placeholder="title of the certification"
-                />
-            </Grid>
-            <Grid
-            item
-            md={12}
-            xs={12}
-            >
-                <TextField
-                    error={Boolean(touched.skillCert && errors.skillCert)}
-                    fullWidth
-                    helperText={touched.skillCert && errors.skillCert}
-                    label="Skill"
-                    name="skillCert"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.skillCert}
-                    variant="outlined"
-                />
-            </Grid>
-            <Grid
-            item
-            md={12}
-            xs={12}
-            >
-                <TextField
-                    error={Boolean(touched.descCert && errors.descCert)}
-                    fullWidth
-                    helperText={touched.descCert && errors.descCert}
-                    label="Description"
-                    name="descCert"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={values.descCert}
-                    variant="outlined"
-                    placeholder="A brief description of the certification performed"
-                />
-            </Grid>
-        </>
-    );
-}
-const addExperience = (values,handleBlur,handleChange, errors, touched) => {
-    return(
-        <>
-                <Grid
-                item
-                md={3}
-                xs={12}
-                >
-                    <TextField
-                        error={Boolean(touched.dateExp && errors.dateExp)}
-                        fullWidth
-                        helperText={touched.dateExp && errors.dateExp}
-                        label="Date"
-                        name="dateExp"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.dateExp}
-                        variant="outlined"
-                    />
-                </Grid>
-                <Grid
-                item
-                md={3}
-                xs={12}
-                >
-                    <TextField
-                        error={Boolean(touched.durationExp && errors.durationExp)}
-                        fullWidth
-                        helperText={touched.durationExp && errors.durationExp}
-                        label="Duration"
-                        name="durationExp"
-                        onBlur={handleBlur}
-                        onChange={handleChange}                               
-                        value={values.durationExp}
-                        variant="outlined"
-                    />
-                </Grid>
-                <Grid
-                item
-                md={3}
-                xs={12}
-                >
-                    <Autocomplete
-                        getOptionLabel={(option) => option.text}
-                        options={fullTime}
-                        renderInput={(params) => (
-                        <TextField
-                            error={Boolean(touched.timeExp && errors.timeExp)}
-                            fullWidth
-                            helperText={touched.timeExp && errors.timeExp}
-                            label="Time"
-                            name="timeExp"
-                            onChange={handleChange}
-                            variant="outlined"
-                            {...params}
-                        />
-                        )}
-                    />
-                </Grid>
-                <Grid
-                item
-                md={3}
-                xs={12}
-                >
-                    <TextField
-                        error={Boolean(touched.company && errors.company)}
-                        fullWidth
-                        helperText={touched.company && errors.company}
-                        label="Company"
-                        name="company"
-                        onBlur={handleBlur}
-                        onChange={handleChange}                               
-                        value={values.company}
-                        variant="outlined"
-                        placeholder="Client company"
-                    />
-                </Grid>
-                <Grid
-                item
-                md={12}
-                xs={12}
-                >
-                    <TextField
-                        error={Boolean(touched.skillExp && errors.skillExp)}
-                        fullWidth
-                        helperText={touched.skillExp && errors.skillExp}
-                        label="Skill"
-                        name="skillExp"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.skillExp}
-                        variant="outlined"
-                    />
-                </Grid>
-                <Grid
-                item
-                md={12}
-                xs={12}
-                >
-                    <TextField
-                        error={Boolean(touched.descExp && errors.descExp)}
-                        fullWidth
-                        helperText={touched.descExp && errors.descExp}
-                        label="Description"
-                        name="descExp"
-                        onBlur={handleBlur}
-                        onChange={handleChange}
-                        value={values.descExp}
-                        variant="outlined"
-                        placeholder="A brief description of the certification performed"
-                    />
-                </Grid>
-        </>
-    )
-}
 const Trainer = ({ className, ...rest }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  const [experience,setExperience] = useState(false);
-  const [certification,setCertification] = useState(false);
+  const [key, setKey] = React.useState(1);
+  const [keyCert, setKeyCert] = React.useState(1);
+  const [attestation, setAttestation] = useState();
+  const [cv, setCv] = useState();
+  const removeExperience = key => {
+    const updateDiv = () =>
+      setDivExp(divExp => {
+        const myDivs = divExp.filter(element => Number(element.key) !== key);
+        return myDivs;
+      });
+    return updateDiv;
+  };
+  const removeCertificate = key => {
+    const updateDiv = () =>
+      setDivCert(divCert => {
+        const myCert = divCert.filter(element => Number(element.key) !== key);
+        return myCert;
+      });
+    return updateDiv;
+  };
+  const [divCert, setDivCert]= useState([
+    <ComponentCert key={0} onRemoveElement={removeCertificate(0)} />        
+  ])
+  const [divExp, setDivExp]= useState([
+    <ComponentExp key={0} onRemoveElement={removeExperience(0)} />        
+  ])
+  const addExperience = e => {
+    setDivExp(divExp => {
+      const myExp = [...divExp];
+      myExp.push(
+        <ComponentExp
+          key={key}
+          onRemoveElement={removeExperience(key)}
+        />
+      );
+      return myExp;
+    });
+    setKey(key + 1);
+  };
+  const addCertificate = e => {
+    setDivCert(divCert => {
+      const myCert = [...divCert];
+      myCert.push(
+        <ComponentExp
+          key={keyCert}
+          onRemoveElement={removeCertificate(keyCert)}
+        />
+      );
+      return myCert;
+    });
+    setKeyCert(keyCert + 1);
+  };
+  
 
-  const handleClickExperience = () => {
-      setExperience(true);
+  const handleChangeCv = (event) => {
+      setCv(event.target.files[0].name);
   }
-  const handleClickCertification = () => {
-      setCertification(true);
+  const handleChangeAttestation = (event) => {
+      setAttestation(event.target.files[0].name);
   }
-
   return (
     <Formik
       enableReinitialize
@@ -284,17 +106,6 @@ const Trainer = ({ className, ...rest }) => {
         averagePrice: '',
         registration: '',
         isPublic: false,
-        dateCert: '',
-        dateExp: '',
-        durationCert: '',
-        durationExp: '',
-        timeExp: '',
-        timeCert: '',
-        company: '',
-        skillCert: '',
-        skillExp: '',
-        descExp: '',
-        descCert: '',
         computerSkill: '',
         birthday: '',
         timeTrainer: '',
@@ -315,17 +126,6 @@ const Trainer = ({ className, ...rest }) => {
         computerSkill: Yup.string(),
         registration: Yup.string().max(255).required('Registration number is required'),
         isPublic: Yup.bool(),
-        dateCert: Yup.date(),
-        dateExp: Yup.date(),
-        durationCert : Yup.number().min(0),
-        durationExp : Yup.number().min(0),
-        timeExp: Yup.string().max(255),
-        timeCert: Yup.string().max(255), 
-        company: Yup.string().max(255),
-        skillCert: Yup.string().max(255),
-        skillExp: Yup.string().max(255),
-        descCert: Yup.string(),
-        descExp: Yup.string(),
         birthday: Yup.date(),
         timeTrainer: Yup.string(),
         skills: Yup.string(),
@@ -593,16 +393,21 @@ const Trainer = ({ className, ...rest }) => {
                         md={4}
                         xs={12}
                         >
-                            <TextField
-                                error={Boolean(touched.computerSkill && errors.computerSkill)}
-                                fullWidth
-                                helperText={touched.computerSkill && errors.computerSkill}
-                                label="Computer skills"
-                                name="computerSkill"
-                                onBlur={handleBlur}
-                                onChange={handleChange}                               
-                                value={values.computerSkill}
-                                variant="outlined"
+                            <Autocomplete
+                                getOptionLabel={(option) => option.text}
+                                options={computerSkill}
+                                renderInput={(params) => (
+                                <TextField
+                                    error={Boolean(touched.computerSkill && errors.computerSkill)}
+                                    fullWidth
+                                    helperText={touched.computerSkill && errors.computerSkill}
+                                    label="Computer skills"
+                                    name="computerSkill"
+                                    onChange={handleChange}
+                                    variant="outlined"
+                                    {...params}
+                                />
+                                )}
                             />
                         </Grid>
                         <Grid
@@ -620,7 +425,7 @@ const Trainer = ({ className, ...rest }) => {
                                 onChange={handleChange}
                                 value={values.birthday}
                                 variant="outlined"
-                                placeholder="ex: 09/11/2020"
+                                placeholder="ex: 2020-02-02"
                             />
                         </Grid>
                         <Grid
@@ -634,16 +439,18 @@ const Trainer = ({ className, ...rest }) => {
                                 My CV (pdf/word/ppt,2Mo max)
                             </Typography>
                             <input
-                                accept="image/*"
+                                accept="application/*,image/*"
                                 className={classes.input}
                                 id="contained-button-file"
                                 multiple
+                                onChange={handleChangeCv}
                                 type="file"
                             />
                             <label htmlFor="contained-button-file">
                                 <Button variant="contained" component="span" color="primary">
                                 Upload
                                 </Button>
+                                <span style={{marginLeft: "5px"}}>{cv}</span>
                             </label>
                         </Grid>
                         <Grid
@@ -657,16 +464,18 @@ const Trainer = ({ className, ...rest }) => {
                                 My URSSAF certificate (pdf/jpg/png,2Mo max)
                             </Typography>
                             <input
-                                accept="image/*"
+                                accept="application/*,image/*"
                                 className={classes.input}
-                                id="contained-button-file"
+                                id="contained-button-fileAttestation"
                                 multiple
+                                onChange={handleChangeAttestation}
                                 type="file"
                             />
-                            <label htmlFor="contained-button-file">
+                            <label htmlFor="contained-button-fileAttestation">
                                 <Button variant="contained" component="span" color="primary">
                                     Upload
                                 </Button>
+                                <span style={{marginLeft: "5px"}}>{attestation}</span>
                             </label>
                         </Grid>
                     </Grid>
@@ -691,13 +500,13 @@ const Trainer = ({ className, ...rest }) => {
                         container
                         spacing={4}
                     >
-                        {experience ? addExperience(values,handleBlur,handleChange, errors, touched) : null}
+                        {divExp.map(element => element)}
                         <Grid
                         item
                         md={4}
                         xs={12}
                         >
-                            <Button variant="contained" onClick={handleClickExperience}>
+                            <Button variant="contained" onClick={addExperience}>
                                 Add experience
                             </Button>
                         </Grid>
@@ -723,13 +532,13 @@ const Trainer = ({ className, ...rest }) => {
                             container
                             spacing={4}
                         >
-                            {certification ? addCertification(values,handleBlur,handleChange, errors, touched) : null}
+                            {divCert.map(element => element)}
                             <Grid
                             item
                             md={4}
                             xs={12}
                             >
-                                <Button variant="contained" onClick={handleClickCertification}>
+                                <Button variant="contained" onClick={addCertificate}>
                                     Add certification
                                 </Button>
                             </Grid>

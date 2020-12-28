@@ -126,7 +126,7 @@ const LoginView = () => {
       className={classes.root}
       title="Login"
     >
-      <TopBar />
+      <TopBar activeaccount='true'/>
       <div className={classes.blocImageCover}>
         <div className={classes.blocImageForm}>
           <Box 
