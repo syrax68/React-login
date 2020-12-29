@@ -1,50 +1,64 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import { Grid, makeStyles } from '@material-ui/core';
+import React, {useState} from 'react';
+import {
+  Box,
+  Container,
+  Divider,
+  Tab,
+  Tabs,
+} from '@material-ui/core';
+
+import AccountDetails from './AccountDetails';
+import Notifications from '../Notifications';
+import Security from '../Security';
+import Subscription from '../Subscription';
 import useAuth from 'src/hooks/useAuth';
-import ProfileDetails from './ProfileDetails';
-import GeneralSettings from './GeneralSettings';
 
-const useStyles = makeStyles(() => ({
-  root: {}
-}));
+const General = () => {
 
-const General = ({ className, ...rest }) => {
-  const classes = useStyles();
+  const [currentTab, setCurrentTab] = useState('account');
+  const tabs = [
+    { value: 'account', label: 'Account Details' },
+    { value: 'notifications', label: 'Notifications' },
+    { value: 'security', label: 'Security' },
+    { value: 'subscription', label: 'Subscription' },
+  ];
   const { user } = useAuth();
-
+  const handleTabsChange = (event, value) => {
+    setCurrentTab(value);
+  };
   return (
-    <Grid
-      className={clsx(classes.root, className)}
-      container
-      spacing={3}
-      {...rest}
-    >
-      <Grid
-        item
-        lg={4}
-        md={6}
-        xl={3}
-        xs={12}
+    <>
+    <Container maxWidth="lg">
+      <Box mt={3}>
+        <Tabs
+          onChange={handleTabsChange}
+          scrollButtons="auto"
+          value={currentTab}
+          textColor="secondary"
+          variant="scrollable"
+        >
+          {tabs.map((tab) => (
+            <Tab
+              key={tab.value}
+              label={tab.label}
+              value={tab.value}
+            />
+          ))}
+        </Tabs>
+      </Box>
+      <Divider />
+      <Box
+        py={3}
+        pb={6}
       >
-        <ProfileDetails user={user} />
-      </Grid>
-      <Grid
-        item
-        lg={8}
-        md={6}
-        xl={9}
-        xs={12}
-      >
-        <GeneralSettings user={user} />
-      </Grid>
-    </Grid>
+        {currentTab === 'account' && <AccountDetails />}
+        {currentTab === 'notifications' && <Notifications />}
+        {currentTab === 'security' && <Security user={user} />}
+        {currentTab === 'subscription' && <Subscription />}
+      </Box>
+    </Container>
+    </>
   );
-}
-
-General.propTypes = {
-  className: PropTypes.string
 };
 
 export default General;

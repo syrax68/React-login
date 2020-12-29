@@ -80,7 +80,7 @@ const UserRight = ({ className, user, ...rest }) => {
             className={clsx(classes.root, className)}
             {...rest}
             >
-                <CardHeader title="User Right" />
+                <CardHeader title="User Rights" />
                 <Divider />
                 <CardContent>
                     <Box

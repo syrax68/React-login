@@ -11,12 +11,8 @@ import useAuth from 'src/hooks/useAuth';
 import Page from 'src/components/Page';
 import Header from './Header';
 import General from './General';
-import Subscription from './Subscription';
-import Notifications from './Notifications';
-import Security from './Security';
 import Organisations from './Organisations';
 import Trainer from './Trainer';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,11 +32,6 @@ const AccountView = () => {
     { value: 'account', label: 'Account' },
     { value: 'organisations', label: 'Organisations' },
     { value: 'trainerProfile', label: 'Trainer Profile' },
-    { value: 'orders', label: 'Orders' },
-    { value: 'notifications', label: 'Notifications' },
-    { value: 'security', label: 'Security' },
-    { value: 'subscription', label: 'Subscription' },
-    
   ];
 
   const handleTabsChange = (event, value) => {
@@ -84,10 +75,6 @@ const AccountView = () => {
           {currentTab === 'account' && <General />}
           {currentTab === 'organisations' && <Organisations />}
           {user && user.activeTrainer && currentTab === 'trainerProfile' && <Trainer />}
-          {currentTab === 'orders' && <Security user={user}/>}
-          {currentTab === 'notifications' && <Notifications />}
-          {currentTab === 'security' && <Security user={user}/>}
-          {currentTab === 'subscription' && <Subscription />}
         </Box>
       </Container>
     </Page>
