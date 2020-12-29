@@ -24,8 +24,8 @@ const users = [
     state: 'New York',
     tier: 'Premium',
     trainer: true,
-    administrateur: false,
-    salesman: false,
+    administrateur: true,
+    salesman: true,
   }
 ];
 
