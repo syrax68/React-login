@@ -212,7 +212,8 @@ function reduceChildRoutes({
         {renderNavItems({
           depth: depth + 1,
           pathname,
-          items: item.items
+          items: item.items,
+          user
         })}
       </NavItem>
     );
