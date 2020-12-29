@@ -46,7 +46,6 @@ const AccountView = () => {
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);
   };
-  console.log(user.activeTrainer)
   return (
     <Page
       className={classes.root}
@@ -62,7 +61,7 @@ const AccountView = () => {
             variant="scrollable"
             textColor="secondary"
           >
-            {user.activeTrainer?
+            {(user && user.activeTrainer)?
             tabs.map((tab) => (      
               <Tab
                 key={tab.value}
@@ -84,7 +83,7 @@ const AccountView = () => {
         <Box mt={3}>
           {currentTab === 'account' && <General />}
           {currentTab === 'organisations' && <Organisations />}
-          {user.activeTrainer && currentTab === 'trainerProfile' && <Trainer />}
+          {user && user.activeTrainer && currentTab === 'trainerProfile' && <Trainer />}
           {currentTab === 'orders' && <Security user={user}/>}
           {currentTab === 'notifications' && <Notifications />}
           {currentTab === 'security' && <Security user={user}/>}
