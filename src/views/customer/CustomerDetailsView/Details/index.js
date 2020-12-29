@@ -6,6 +6,8 @@ import CustomerInfo from './CustomerInfo';
 import Emails from './Emails';
 import Invoices from './Invoices';
 import OtherActions from './OtherActions';
+import UserRight from './UserRight';
+import useAuth from 'src/hooks/useAuth';
 
 const useStyles = makeStyles(() => ({
   root: {}
@@ -17,7 +19,7 @@ const Details = ({
   ...rest
 }) => {
   const classes = useStyles();
-
+  const { user } = useAuth();
   return (
     <Grid
       className={clsx(classes.root, className)}
@@ -60,6 +62,15 @@ const Details = ({
         xs={12}
       >
         <OtherActions />
+      </Grid>
+      <Grid
+        item
+        lg={4}
+        md={6}
+        xl={3}
+        xs={12}
+      >
+        <UserRight user={user} />
       </Grid>
     </Grid>
   );

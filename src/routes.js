@@ -85,6 +85,21 @@ const routes = [
       },
       {
         exact: true,
+        path: '/app/account/trainer',
+        component: lazy(() => import('src/views/account/AccountView/Trainer'))
+      },
+      {
+        exact: true,
+        path: '/app/account/view',
+        component: lazy(() => import('src/views/account/AccountView/General/index'))
+      },
+      {
+        exact: true,
+        path: '/app/account/organisation',
+        component: lazy(() => import('src/views/account/AccountView/Organisations'))
+      },
+      {
+        exact: true,
         path: '/app/calendar',
         component: lazy(() => import('src/views/calendar/CalendarView'))
       },

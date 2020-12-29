@@ -34,19 +34,19 @@ const AccountView = () => {
 
   const tabs = [
     { value: 'account', label: 'Account' },
-    { value: 'subscription', label: 'Subscription' },
     { value: 'organisations', label: 'Organisations' },
     { value: 'trainerProfile', label: 'Trainer Profile' },
     { value: 'orders', label: 'Orders' },
     { value: 'notifications', label: 'Notifications' },
-    { value: 'security', label: 'Security' }
+    { value: 'security', label: 'Security' },
+    { value: 'subscription', label: 'Subscription' },
     
   ];
 
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);
   };
-
+  console.log(user.activeTrainer)
   return (
     <Page
       className={classes.root}
@@ -62,24 +62,33 @@ const AccountView = () => {
             variant="scrollable"
             textColor="secondary"
           >
-            {tabs.map((tab) => (
+            {user.activeTrainer?
+            tabs.map((tab) => (      
               <Tab
                 key={tab.value}
                 label={tab.label}
                 value={tab.value}
               />
-            ))}
+            )):tabs.map((tab) => (   
+              tab.value !== 'trainerProfile'?   
+              <Tab
+                key={tab.value}
+                label={tab.label}
+                value={tab.value}
+              />:null
+            ))
+            }
           </Tabs>
         </Box>
         <Divider />
         <Box mt={3}>
           {currentTab === 'account' && <General />}
-          {currentTab === 'subscription' && <Subscription />}
           {currentTab === 'organisations' && <Organisations />}
-          {currentTab === 'trainerProfile' && <Trainer />}
+          {user.activeTrainer && currentTab === 'trainerProfile' && <Trainer />}
           {currentTab === 'orders' && <Security user={user}/>}
           {currentTab === 'notifications' && <Notifications />}
           {currentTab === 'security' && <Security user={user}/>}
+          {currentTab === 'subscription' && <Subscription />}
         </Box>
       </Container>
     </Page>

@@ -39,7 +39,7 @@ const ProfileView = () => {
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);
   };
-
+  
   const getPosts = useCallback(async () => {
     try {
       const response = await axios.get('/api/social/profile');

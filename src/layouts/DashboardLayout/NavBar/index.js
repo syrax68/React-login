@@ -4,6 +4,7 @@ import { useLocation, matchPath } from 'react-router-dom';
 import { Link as RouterLink } from 'react-router-dom';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
+import useAuth from 'src/hooks/useAuth';
 import {
   Avatar,
   Box,
@@ -24,13 +25,33 @@ import {
   BarChart as BarChartIcon,
   BarChart2 as BarChartIcon2,
   PieChart as PieChartIcon,
-  Users as UsersIcon
+  Users as UsersIcon,
+  User as UserIcon,
 } from 'react-feather';
 import Logo from 'src/components/Logo';
-import useAuth from 'src/hooks/useAuth';
 import NavItem from './NavItem';
 
 const sections = [
+  {
+    subheader: 'General',
+    items: [
+      {
+        title: 'Account',
+        icon: UserIcon,
+        href: '/app/account/view'
+      },
+      {
+        title: 'Organisations',
+        icon: BriefcaseIcon,
+        href: '/app/account/organisation'
+      },
+      {
+        title: 'Trainer Profile',
+        icon: UserIcon,
+        href: '/app/account/trainer'
+      }
+    ]
+  },
   {
     subheader: 'Reports',
     items: [
@@ -40,7 +61,7 @@ const sections = [
         href: '/app/reports/dashboard'
       },
       {
-        title: 'Seller Dashboard',
+        title: 'Salesman Dashboard',
         icon: BarChartIcon,
         href: '/app/reports/dashboard-seller'
       },
@@ -152,12 +173,13 @@ const sections = [
 function renderNavItems({
   items,
   pathname,
-  depth = 0
+  depth = 0,
+  user
 }) {
   return (
     <List disablePadding>
       {items.reduce(
-        (acc, item) => reduceChildRoutes({ acc, item, pathname, depth }),
+        (acc, item) => reduceChildRoutes({ acc, item, pathname, depth, user }),
         []
       )}
     </List>
@@ -168,16 +190,16 @@ function reduceChildRoutes({
   acc,
   pathname,
   item,
-  depth
+  depth,
+  user
 }) {
   const key = item.title + depth;
-
+   
   if (item.items) {
     const open = matchPath(pathname, {
       path: item.href,
       exact: false
     });
-
     acc.push(
       <NavItem
         depth={depth}
@@ -195,16 +217,57 @@ function reduceChildRoutes({
       </NavItem>
     );
   } else {
-    acc.push(
-      <NavItem
-        depth={depth}
-        href={item.href}
-        icon={item.icon}
-        info={item.info}
-        key={key}
-        title={item.title}
-      />
-    );
+      if(user && user.trainer && user.salesman){
+        acc.push(
+          <NavItem
+            depth={depth}
+            href={item.href}
+            icon={item.icon}
+            info={item.info}
+            key={key}
+            title={item.title}
+          />
+        );
+      }else if(user && !user.trainer && user.salesman){
+        if(item.title !== 'Trainer Dashboard'){
+          acc.push(
+            <NavItem
+              depth={depth}
+              href={item.href}
+              icon={item.icon}
+              info={item.info}
+              key={key}
+              title={item.title}
+            />
+          );
+        }
+      }else if(user && user.trainer && !user.salesman){
+        if(item.title !== 'Salesman Dashboard'){
+          acc.push(
+            <NavItem
+              depth={depth}
+              href={item.href}
+              icon={item.icon}
+              info={item.info}
+              key={key}
+              title={item.title}
+            />
+          );
+        }
+      }else if(user && !user.trainer && !user.salesman){
+        if(item.title !== 'Trainer Dashboard' && item.title !== 'Salesman Dashboard'){
+          acc.push(
+            <NavItem
+              depth={depth}
+              href={item.href}
+              icon={item.icon}
+              info={item.info}
+              key={key}
+              title={item.title}
+            />
+          );
+        }
+      }
   }
 
   return acc;
@@ -230,14 +293,12 @@ const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
   const location = useLocation();
   const { user } = useAuth();
-
   useEffect(() => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
-
   const content = (
     <Box
       height="100%"
@@ -313,8 +374,9 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             >
               {renderNavItems({
                 items: section.items,
-                pathname: location.pathname
-              })}
+                pathname: location.pathname,
+                user: user,
+              })}           
             </List>
           ))}
         </Box>
@@ -351,7 +413,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
 NavBar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 export default NavBar;

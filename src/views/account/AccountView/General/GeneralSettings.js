@@ -43,9 +43,13 @@ const GeneralSettings = ({ className, user, ...rest }) => {
         gender: user.gender || '',
         email: user.email || '',
         isPublic: user.isPublic || false,
+        activeTrainer: user.activeTrainer || false,
         name: user.name || '',
         phone: user.phone || '',
         state: user.state || '',
+        trainer: user.trainer || false,
+        administrateur: user.administrateur || false,
+        salesman: user.salesman || false,
         submit: null
       }}
       validationSchema={Yup.object().shape({
@@ -56,8 +60,12 @@ const GeneralSettings = ({ className, user, ...rest }) => {
         gender: Yup.string().max(255),
         email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
         isPublic: Yup.bool(),
+        activeTrainer: Yup.bool(),
         name: Yup.string().max(255).required('Name is required'),
         phone: Yup.string(),
+        trainer: Yup.bool(),
+        administrateur: Yup.bool(),
+        salesman: Yup.bool(),
         state: Yup.string()
       })}
       onSubmit={async (values, {
@@ -315,6 +323,81 @@ const GeneralSettings = ({ className, user, ...rest }) => {
                     name="canHire"
                     onChange={handleChange}
                   />
+                </Grid>
+                <Grid
+                  item
+                  md={12}
+                  xs={12}
+                >
+                  <Typography
+                    variant="h6"
+                    color="textPrimary"
+                  >
+                    Activate my trainer account
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                  >
+                    Toggling this will let you show your trainer profil
+                  </Typography>
+                  <Switch
+                    checked={values.activeTrainer}
+                    edge="start"
+                    name="activeTrainer"
+                    onChange={handleChange}
+                  />
+                </Grid>
+                <Grid
+                    item
+                    md={4}
+                    xs={12}
+                >
+                    <Typography
+                    variant="h6"
+                    color="textPrimary"
+                    >
+                    Salesman
+                    </Typography>
+                    <Switch
+                    checked={values.salesman}
+                    edge="start"
+                    name="salesman"
+                    />
+                </Grid>
+                <Grid
+                  item
+                  md={4}
+                  xs={12}
+                >
+                    <Typography
+                      variant="h6"
+                      color="textPrimary"
+                    >
+                    Trainer
+                    </Typography>
+                    <Switch
+                      checked={values.trainer}
+                      edge="start"
+                      name="trainer"
+                    />
+                </Grid>
+                <Grid
+                    item
+                    md={4}
+                    xs={12}
+                >
+                    <Typography
+                      variant="h6"
+                      color="textPrimary"
+                    >
+                    Administrateur
+                    </Typography>
+                    <Switch
+                      checked={values.administrateur}
+                      edge="start"
+                      name="administrateur"
+                    />
                 </Grid>
               </Grid>
               {errors.submit && (

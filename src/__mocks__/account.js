@@ -14,12 +14,18 @@ const users = [
     country: 'USA',
     email: 'demo@devias.io',
     isPublic: true,
+    gender: 'Man',
+    birthday: '1998-02-12',
+    activeTrainer: true,
     name: 'Katarina Smith',
     password: 'Password123',
     phone: '+40 777666555',
     role: 'admin',
     state: 'New York',
-    tier: 'Premium'
+    tier: 'Premium',
+    trainer: true,
+    administrateur: false,
+    salesman: false,
   }
 ];
 
@@ -132,7 +138,15 @@ mock.onGet('/api/account/me').reply((config) => {
         email: user.email,
         name: user.name,
         tier: user.tier,
+        gender: user.gender,
+        isPublic: user.isPublic,
+        activeTrainer: user.activeTrainer,
+        birthday: user.birthday,
+        phone: user.phone,
         password: user.password,
+        trainer: user.trainer,
+        administrateur: user.administrateur,
+        salesman: user.salesman
       }
     }];
   } catch (err) {
@@ -164,7 +178,14 @@ mock.onGet('/api/account/settings').reply((config) => {
         email: user.email,
         name: user.name,
         tier: user.tier,
+        gender: user.gender,
+        isPublic: user.isPublic,
+        activeTrainer: user.activeTrainer,
+        birthday: user.birthday,
         password: user.password,
+        trainer: user.trainer,
+        administrateur: user.administrateur,
+        salesman: user.salesman
       }
     }];
   } catch (err) {
