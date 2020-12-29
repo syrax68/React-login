@@ -43,13 +43,13 @@ const GeneralSettings = ({ className, user, ...rest }) => {
         gender: user.gender || '',
         email: user.email || '',
         isPublic: user.isPublic || false,
-        activeTrainer: user.activeTrainer || false,
+        activeTrainer: user.activeTrainer,
         name: user.name || '',
         phone: user.phone || '',
         state: user.state || '',
-        trainer: user.trainer || false,
-        administrateur: user.administrateur || false,
-        salesman: user.salesman || false,
+        trainer: user.trainer,
+        administrateur: user.administrateur,
+        salesman: user.salesman,
         submit: null
       }}
       validationSchema={Yup.object().shape({
