@@ -20,7 +20,7 @@ const General = () => {
     { value: 'account', label: 'Account Details' },
     { value: 'notifications', label: 'Notifications' },
     { value: 'security', label: 'Security' },
-    { value: 'subscription', label: 'Subscription' },
+    { value: 'subscription', label: 'Client Subscription' },
   ];
   const { user } = useAuth();
   const handleTabsChange = (event, value) => {

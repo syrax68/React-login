@@ -177,7 +177,7 @@ const PricingView = () => {
                   variant="overline"
                   color="inherit"
                 >
-                  Premium
+                  Classic Client
                 </Typography>
                 <div>
                   <Typography

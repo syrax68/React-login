@@ -40,7 +40,7 @@ const AccountView = () => {
   return (
     <Page
       className={classes.root}
-      title="Settings"
+      title="Account"
     >
       <Container maxWidth="lg">
         <Header />

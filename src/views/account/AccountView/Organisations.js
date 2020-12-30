@@ -40,7 +40,7 @@ const Organisations = ({ className, ...rest }) => {
         organisationAndMe: '',
         registration: '',
         isPublic: false,
-        social: '',
+        companyName: '',
         vat: '',
         logo: '',
         organisationAndMyTraining: '',
@@ -54,7 +54,7 @@ const Organisations = ({ className, ...rest }) => {
         organisationAndMe: Yup.string(),
         registration: Yup.string().max(255).required('Registration number is required'),
         isPublic: Yup.bool(),
-        social: Yup.string().max(255).required('Social reason is required'),
+        companyName: Yup.string().max(255).required('Company name is required'),
         vat: Yup.string().max(255),
         postal: Yup.number().min(0)
       })}
@@ -136,14 +136,14 @@ const Organisations = ({ className, ...rest }) => {
                   xs={12}
                 >
                   <TextField
-                    error={Boolean(touched.social && errors.social)}
+                    error={Boolean(touched.companyName && errors.companyName)}
                     fullWidth
-                    helperText={touched.social && errors.social}
-                    label="Social reason"
-                    name="social"
+                    helperText={touched.companyName && errors.companyName}
+                    label="Company name"
+                    name="companyName"
                     onBlur={handleBlur}
                     onChange={handleChange}
-                    value={values.social}
+                    value={values.companyName}
                     variant="outlined"
                   />
                 </Grid>

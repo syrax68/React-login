@@ -56,8 +56,6 @@ const ProfileDetails = ({ className, user, ...rest }) => {
             color="textPrimary"
             variant="body1"
           >
-            Your tier:
-            {' '}
             <Link
               component={RouterLink}
               to="/pricing"

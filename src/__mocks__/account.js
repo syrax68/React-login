@@ -22,7 +22,7 @@ const users = [
     phone: '+40 777666555',
     role: 'admin',
     state: 'New York',
-    tier: 'Premium',
+    tier: 'Classic Client',
     trainer: true,
     administrateur: true,
     salesman: true,
@@ -196,8 +196,8 @@ mock.onGet('/api/account/settings').reply((config) => {
 
 mock.onGet('/api/account/subscription').reply(200, {
   subscription: {
-    name: 'Premium',
-    price: 29,
+    name: 'Classic Client',
+    price: 0,
     currency: '$',
     proposalsLeft: 12,
     templatesLeft: 5,

@@ -78,7 +78,7 @@ export const AuthProvider = ({ children }) => {
             avatar: user.picture,
             email: user.email,
             name: user.name,
-            tier: 'Premium'
+            tier: 'Classic Client'
           }
         }
       });
@@ -120,7 +120,7 @@ export const AuthProvider = ({ children }) => {
                 avatar: user.picture,
                 email: user.email,
                 name: user.name,
-                tier: 'Premium'
+                tier: 'Classic Client'
               }
             }
           });

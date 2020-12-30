@@ -38,7 +38,7 @@ const sections = [
       {
         title: 'Account',
         icon: UserIcon,
-        href: '/app/account/view'
+        href: '/app/account'
       },
       {
         title: 'Organisations',
@@ -348,8 +348,6 @@ const NavBar = ({ onMobileClose, openMobile }) => {
               variant="body2"
               color="textSecondary"
             >
-              Your tier:
-              {' '}
               <Link
                 component={RouterLink}
                 to="/pricing"

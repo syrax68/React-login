@@ -8,7 +8,8 @@ import {
 } from '@material-ui/core';
 
 import TrainerProfile from './Components/TrainerProfile';
-import PublicProfile from 'src/views/social/ProfileView';
+import TrainerSubscription from './Components/TrainerSubscription';
+import PublicProfile from 'src/views/social/ProfileView'; 
 
 const Trainer = () => {
 
@@ -16,6 +17,7 @@ const Trainer = () => {
   const tabs = [
     { value: 'trainer', label: 'Trainer Profile' },
     { value: 'public', label: 'Public Profile' },
+    { value: 'subscription', label: 'Trainer Subscription' },
   ];
 
   const handleTabsChange = (event, value) => {
@@ -48,6 +50,7 @@ const Trainer = () => {
       >
         {currentTab === 'trainer' && <TrainerProfile />}
         {currentTab === 'public' && <PublicProfile />}
+        {currentTab === 'subscription' && <TrainerSubscription />}
       </Box>
     </Container>
     </>
