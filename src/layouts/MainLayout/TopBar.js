@@ -222,7 +222,6 @@ const useStyles = makeStyles((theme) => ({
 const TopBar = ({activeaccount,activecontact,activeformation,className, ...rest }) => {
   const classes = useStyles();
   const [openMenu, setOpenMenu] = useState(false);
-  console.log(activeaccount);
   const handleMenuOpen = () => {
     setOpenMenu((prev) => !prev);
   };

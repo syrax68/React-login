@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Box,
   Container,
@@ -13,15 +13,20 @@ import Security from '../Security';
 import Subscription from '../Subscription';
 import useAuth from 'src/hooks/useAuth';
 
-const General = () => {
+const General = (parameter) => {
 
-  const [currentTab, setCurrentTab] = useState('account');
+  const [currentTab, setCurrentTab] = useState(parameter.parameter? parameter.parameter: 'account');
   const tabs = [
     { value: 'account', label: 'Account Details' },
     { value: 'notifications', label: 'Notifications' },
     { value: 'security', label: 'Security' },
     { value: 'subscription', label: 'Client Subscription' },
   ];
+  
+  useEffect(() => {
+    setCurrentTab(parameter.parameter? parameter.parameter: 'account');
+  }, [parameter]);
+
   const { user } = useAuth();
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);

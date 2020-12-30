@@ -80,23 +80,43 @@ const routes = [
     routes: [
       {
         exact: true,
-        path: '/app/account',
+        path: '/app/general/:parameter',
         component: lazy(() => import('src/views/account/AccountView'))
       },
       {
         exact: true,
-        path: '/app/account/trainer',
-        component: lazy(() => import('src/views/account/AccountView/Trainer'))
+        path: '/app/general/trainer',
+        component: lazy(() => import('src/views/account/AccountView'))
       },
       {
         exact: true,
-        path: '/app/account/view',
-        component: lazy(() => import('src/views/account/AccountView/General/index'))
+        path: '/app/general/organisations',
+        component: lazy(() => import('src/views/account/AccountView'))
       },
       {
         exact: true,
-        path: '/app/account/organisation',
-        component: lazy(() => import('src/views/account/AccountView/Organisations'))
+        path: '/app/general/account',
+        component: lazy(() => import('src/views/account/AccountView'))
+      },
+      {
+        exact: true,
+        path: '/app/general/:parameter1/:parameter2',
+        component: lazy(() => import('src/views/account/AccountView'))
+      },
+      {
+        exact: true,
+        path: '/app/general/account/notifications',
+        component: lazy(() => import('src/views/account/AccountView/General'))
+      },
+      {
+        exact: true,
+        path: '/app/general/account/security',
+        component: lazy(() => import('src/views/account/AccountView/Security'))
+      },
+      {
+        exact: true,
+        path: '/app/general/account/subscription',
+        component: lazy(() => import('src/views/account/AccountView/Subscription'))
       },
       {
         exact: true,

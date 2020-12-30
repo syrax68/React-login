@@ -38,17 +38,35 @@ const sections = [
       {
         title: 'Account',
         icon: UserIcon,
-        href: '/app/account'
+        href: '/app/general/account',
+        items: [
+          {
+            title: 'Account Details',
+            href: '/app/general/account'
+          },
+          {
+            title: 'Notifications',
+            href: '/app/general/account/notifications'
+          },
+          {
+            title: 'Security',
+            href: '/app/general/account/security'
+          },
+          {
+            title: 'Client Subscription',
+            href: '/app/general/account/subscription'
+          }
+        ]
       },
       {
         title: 'Organisations',
         icon: BriefcaseIcon,
-        href: '/app/account/organisation'
+        href: '/app/general/organisations'
       },
       {
         title: 'Trainer Profile',
         icon: UserIcon,
-        href: '/app/account/trainer'
+        href: '/app/general/trainer'
       }
     ]
   },
@@ -194,7 +212,7 @@ function reduceChildRoutes({
   user
 }) {
   const key = item.title + depth;
-   
+  
   if (item.items) {
     const open = matchPath(pathname, {
       path: item.href,
@@ -323,7 +341,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
             display="flex"
             justifyContent="center"
           >
-            <RouterLink to="/app/account">
+            <RouterLink to="/app/general/account">
               <Avatar
                 alt="User"
                 className={classes.avatar}
@@ -337,7 +355,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           >
             <Link
               component={RouterLink}
-              to="/app/account"
+              to="/app/general/account"
               variant="h5"
               color="textPrimary"
               underline="none"

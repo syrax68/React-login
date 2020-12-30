@@ -97,7 +97,7 @@ const Account = () => {
       >
         <MenuItem
           component={RouterLink}
-          to="/app/account"
+          to="/app/general/account"
         >
           Account
         </MenuItem>

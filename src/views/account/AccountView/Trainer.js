@@ -19,7 +19,7 @@ const Trainer = () => {
     { value: 'public', label: 'Public Profile' },
     { value: 'subscription', label: 'Trainer Subscription' },
   ];
-
+  
   const handleTabsChange = (event, value) => {
     setCurrentTab(value);
   };

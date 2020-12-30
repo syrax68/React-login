@@ -14,7 +14,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Header = ({ className, ...rest }) => {
+const Header = ({ className,title, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -30,14 +30,14 @@ const Header = ({ className, ...rest }) => {
           General
         </Link>
         <Typography color="textPrimary">
-          Account
+          {title}
         </Typography>
       </Breadcrumbs>
       <Typography
         variant="h3"
         color="textPrimary"
       >
-        Account
+        {title}
       </Typography>
     </div>
   );

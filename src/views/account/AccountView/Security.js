@@ -25,7 +25,6 @@ const useStyles = makeStyles(() => ({
 const Security = ({ className, user, ...rest }) => {
   const classes = useStyles();
   const { enqueueSnackbar } = useSnackbar();
-  console.log(user);
   return (
     <Formik
       initialValues={{
