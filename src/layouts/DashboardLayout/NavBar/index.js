@@ -94,21 +94,21 @@ const sections = [
     subheader: 'Management',
     items: [
       {
-        title: 'Customers',
+        title: 'Contacts',
         icon: UsersIcon,
-        href: '/app/management/customers',
+        href: '/app/management/contacts',
         items: [
           {
-            title: 'List Customers',
-            href: '/app/management/customers'
+            title: 'List Contacts',
+            href: '/app/management/contacts'
           },
           {
-            title: 'View Customer',
-            href: '/app/management/customers/1'
+            title: 'View Contact',
+            href: '/app/management/contacts/1'
           },
           {
-            title: 'Edit Customer',
-            href: '/app/management/customers/1/edit'
+            title: 'Edit Contact',
+            href: '/app/management/contacts/1/edit'
           }
         ]
       },
@@ -128,17 +128,17 @@ const sections = [
         ]
       },
       {
-        title: 'Orders',
+        title: 'Demands',
         icon: FolderIcon,
-        href: '/app/management/orders',
+        href: '/app/management/demands',
         items: [
           {
-            title: 'List Orders',
-            href: '/app/management/orders'
+            title: 'List Demands',
+            href: '/app/management/demands'
           },
           {
-            title: 'View Order',
-            href: '/app/management/orders/1'
+            title: 'View Demands',
+            href: '/app/management/demands/1'
           }
         ]
       },

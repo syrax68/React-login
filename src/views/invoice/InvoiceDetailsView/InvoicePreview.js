@@ -177,16 +177,16 @@ const InvoicePreview = ({
               Billed to
             </Typography>
             <Typography>
-              {invoice.customer.name}
+              {invoice.contact.name}
               {' '}
               <br />
-              {invoice.customer.company}
+              {invoice.contact.company}
               {' '}
               <br />
-              {invoice.customer.taxId}
+              {invoice.contact.taxId}
               {' '}
               <br />
-              {invoice.customer.address}
+              {invoice.contact.address}
               {' '}
               <br />
             </Typography>

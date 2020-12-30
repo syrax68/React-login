@@ -11,7 +11,7 @@ mock.onGet('/api/search').reply(async () => {
         title: 'What does Algolia do?'
       },
       {
-        description: 'To be clear, search doesn’t know the direction that your business should take. However, it can help you gather information on what your customers want...',
+        description: 'To be clear, search doesn’t know the direction that your business should take. However, it can help you gather information on what your contacts want...',
         title: 'Search as a feedback loop'
       },
       {

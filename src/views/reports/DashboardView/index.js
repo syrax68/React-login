@@ -10,7 +10,7 @@ import LatestProjects from './LatestProjects';
 import NewProjects from './NewProjects';
 import PerformanceOverTime from './PerformanceOverTime';
 import RealTime from './RealTime';
-import RoiPerCustomer from './RoiPerCustomer';
+import RoiPerContact from './RoiPerContact';
 import SystemHealth from './SystemHealth';
 import TeamTasks from './TeamTasks';
 import TodaysMoney from './TodaysMoney';
@@ -68,7 +68,7 @@ const DashboardView = () => {
             sm={6}
             xs={12}
           >
-            <RoiPerCustomer />
+            <RoiPerContact />
           </Grid>
           <Grid
             item

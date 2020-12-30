@@ -106,8 +106,8 @@ const FAQS = ({ className, ...rest }) => {
                   variant="body1"
                   color="textSecondary"
                 >
-                  Yes, we offer email support for all our customers &amp;
-                  even skype meetings for our extended license customers.
+                  Yes, we offer email support for all our contacts &amp;
+                  even skype meetings for our extended license contacts.
                 </Typography>
               </dd>
             </Box>

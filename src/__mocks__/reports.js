@@ -2,7 +2,7 @@ import moment from 'moment';
 import { colors } from '@material-ui/core';
 import mock from 'src/utils/mock';
 
-mock.onGet('/api/reports/customer-activity').reply(() => {
+mock.onGet('/api/reports/contact-activity').reply(() => {
   const activities = [
     {
       id: '5e89140bcc768199d1e0dc49',
@@ -10,7 +10,7 @@ mock.onGet('/api/reports/customer-activity').reply(() => {
         .subtract(23, 'minutes')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         id: '5e887a62195cc5aef7e8ca5d',
         avatar: '/static/images/avatars/avatar_2.png',
         name: 'Ekaterina Tankova',
@@ -24,7 +24,7 @@ mock.onGet('/api/reports/customer-activity').reply(() => {
         .subtract(56, 'minutes')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         id: '5e887ac47eed253091be10cb',
         name: 'Cao Yu',
         avatar: '/static/images/avatars/avatar_3.png'
@@ -38,7 +38,7 @@ mock.onGet('/api/reports/customer-activity').reply(() => {
         .subtract(2, 'hours')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         id: '5e887b209c28ac3dd97f6db5',
         name: 'Alex Richardson',
         avatar: '/static/images/avatars/avatar_4.png'
@@ -52,7 +52,7 @@ mock.onGet('/api/reports/customer-activity').reply(() => {
         .subtract(5, 'minutes')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         id: '5e887b7602bdbc4dbb234b27',
         name: 'Anje Keizer',
         avatar: '/static/images/avatars/avatar_5.png'
@@ -66,7 +66,7 @@ mock.onGet('/api/reports/customer-activity').reply(() => {
         .subtract(5, 'minutes')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         id: '5e86809283e28b96d2d38537',
         name: 'Katarina Smith',
         avatar: '/static/images/avatars/avatar_6.png'
@@ -91,8 +91,8 @@ mock.onGet('/api/reports/earnings').reply(200, {
   }
 });
 
-mock.onGet('/api/reports/latest-orders').reply(() => {
-  const orders = [
+mock.onGet('/api/reports/latest-demands').reply(() => {
+  const demands = [
     {
       id: '5eff2548979e396cb4b000ba',
       createdAt: moment()
@@ -100,7 +100,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(10, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         email: 'ekaterina@devias.io',
         name: 'Ekaterina Tankova'
       },
@@ -118,7 +118,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(50, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         email: 'cao.yu@devias.io',
         name: 'Cao Yu'
       },
@@ -136,7 +136,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(12, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         email: 'alex.richardson@devias.io',
         name: 'Alex Richardson'
       },
@@ -154,7 +154,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(21, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         email: 'anje.keiser@devias.io',
         name: 'Anje Keizer'
       },
@@ -172,7 +172,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(54, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         name: 'Clarke Gillebert',
         email: 'clarke.gillebert@devias.io'
       },
@@ -190,7 +190,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
         .subtract(12, 'seconds')
         .toDate()
         .getTime(),
-      customer: {
+      contact: {
         email: 'merrile.burgett@devias.io',
         name: 'Merrile Burgett'
       },
@@ -202,7 +202,7 @@ mock.onGet('/api/reports/latest-orders').reply(() => {
     }
   ];
 
-  return [200, { orders }];
+  return [200, { demands }];
 });
 
 mock.onGet('/api/reports/latest-projects').reply(() => {

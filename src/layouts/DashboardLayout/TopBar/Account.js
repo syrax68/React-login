@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
   textName:{
     color: '#888'
+  },
+  Button:{
+    textDecoration: 'none',
+    color: 'inherit'
   }
 }));
 
@@ -59,7 +63,6 @@ const Account = () => {
       });
     }
   };
-
   return (
     <>
       <Box
@@ -101,6 +104,11 @@ const Account = () => {
         >
           Account
         </MenuItem>
+        {user.salesman || user.administrateur?
+          <MenuItem >
+          <a href="https://go.optedif.fr/" target="_blank" rel="noopener noreferrer" className={classes.Button}>Management</a> 
+          </MenuItem> 
+        :null}
         <MenuItem onClick={handleLogout}>
           Logout
         </MenuItem>

@@ -9,7 +9,7 @@ const notifications = [
       .toDate()
       .getTime(),
     description: 'Dummy text',
-    title: 'Your order is placed',
+    title: 'Your Demand is placed',
     type: 'order_placed'
   },
   {

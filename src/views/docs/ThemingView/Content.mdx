@@ -1,6 +1,6 @@
 # Theming
 
-For any type of application it is important for your customers to be able to control how it looks and we made that possible using Material UI theme setup. In this version we have two theme options, but we plan to plan to add at least one more.
+For any type of application it is important for your contacts to be able to control how it looks and we made that possible using Material UI theme setup. In this version we have two theme options, but we plan to plan to add at least one more.
 
 ## How it works
 
@@ -12,12 +12,10 @@ const App = () => {
 
   return (
     <ThemeProvider theme={createTheme(settings)}>
-      <StylesProvider jss={jss}>
-        {/* Content */}
-      </StylesProvider>
+      <StylesProvider jss={jss}>{/* Content */}</StylesProvider>
     </ThemeProvider>
   );
-}
+};
 ```
 
 ## Updating palette and other styles

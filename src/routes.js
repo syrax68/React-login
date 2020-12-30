@@ -181,18 +181,18 @@ const routes = [
       },
       {
         exact: true,
-        path: '/app/management/customers',
-        component: lazy(() => import('src/views/customer/CustomerListView'))
+        path: '/app/management/contacts',
+        component: lazy(() => import('src/views/contact/ContactListView'))
       },
       {
         exact: true,
-        path: '/app/management/customers/:customerId',
-        component: lazy(() => import('src/views/customer/CustomerDetailsView'))
+        path: '/app/management/contacts/:contactId',
+        component: lazy(() => import('src/views/contact/ContactDetailsView'))
       },
       {
         exact: true,
-        path: '/app/management/customers/:customerId/edit',
-        component: lazy(() => import('src/views/customer/CustomerEditView'))
+        path: '/app/management/contacts/:contactId/edit',
+        component: lazy(() => import('src/views/contact/ContactEditView'))
       },
       {
         exact: true,
@@ -206,13 +206,13 @@ const routes = [
       },
       {
         exact: true,
-        path: '/app/management/orders',
-        component: lazy(() => import('src/views/order/OrderListView'))
+        path: '/app/management/demands',
+        component: lazy(() => import('src/views/demand/DemandListView'))
       },
       {
         exact: true,
-        path: '/app/management/orders/:orderId',
-        component: lazy(() => import('src/views/order/OrderDetailsView'))
+        path: '/app/management/demands/:demandId',
+        component: lazy(() => import('src/views/demand/DemandDetailsView'))
       },
       {
         exact: true,
@@ -227,7 +227,7 @@ const routes = [
       {
         exact: true,
         path: '/app/management',
-        component: () => <Redirect to="/app/management/customers" />
+        component: () => <Redirect to="/app/management/contacts" />
       },
       {
         exact: true,

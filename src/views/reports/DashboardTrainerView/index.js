@@ -5,11 +5,11 @@ import {
   makeStyles
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import CustomerActivity from './CustomerActivity';
+import ContactActivity from './ContactActivity';
 import EarningsSegmentation from './EarningsSegmentation';
 import FinancialStats from './FinancialStats';
 import Header from './Header';
-import LatestOrders from './LatestOrders';
+import LatestDemands from './LatestDemands';
 import MostProfitableProducts from './MostProfitableProducts';
 import Overview from './Overview';
 import TopReferrals from './TopReferrals';
@@ -64,14 +64,14 @@ const DashboardAlternativeView = () => {
             lg={8}
             xs={12}
           >
-            <LatestOrders />
+            <LatestDemands />
           </Grid>
           <Grid
             item
             lg={4}
             xs={12}
           >
-            <CustomerActivity />
+            <ContactActivity />
           </Grid>
           <Grid
             item

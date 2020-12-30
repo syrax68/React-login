@@ -98,7 +98,7 @@ const applyFilters = (invoices, query, filters) => {
       let containsQuery = false;
 
       properties.forEach((property) => {
-        if (invoice.customer[property].toLowerCase().includes(query.toLowerCase())) {
+        if (invoice.contact[property].toLowerCase().includes(query.toLowerCase())) {
           containsQuery = true;
         }
       });
@@ -239,7 +239,7 @@ const Results = ({ className, invoices, ...rest }) => {
               )
             }}
             onChange={handleQueryChange}
-            placeholder="Search invoices by customer"
+            placeholder="Search invoices by contact"
             value={query}
             variant="outlined"
           />
@@ -325,7 +325,7 @@ const Results = ({ className, invoices, ...rest }) => {
                   />
                 </TableCell>
                 <TableCell>
-                  Customer
+                  Contact
                 </TableCell>
                 <TableCell>
                   Status
@@ -367,7 +367,7 @@ const Results = ({ className, invoices, ...rest }) => {
                         alignItems="center"
                       >
                         <Avatar className={classes.avatar}>
-                          {getInitials(invoice.customer.name)}
+                          {getInitials(invoice.contact.name)}
                         </Avatar>
                         <Box ml={2}>
                           <Link
@@ -377,13 +377,13 @@ const Results = ({ className, invoices, ...rest }) => {
                             underline="none"
                             to="#"
                           >
-                            {invoice.customer.name}
+                            {invoice.contact.name}
                           </Link>
                           <Typography
                             variant="body2"
                             color="textSecondary"
                           >
-                            {invoice.customer.email}
+                            {invoice.contact.email}
                           </Typography>
                         </Box>
                       </Box>

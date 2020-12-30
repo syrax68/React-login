@@ -1,12 +1,12 @@
 import './account';
 import './calendar';
 import './chat';
-import './customers';
+import './contacts';
 import './invoices';
 import './kanban';
 import './mail';
 import './notifications';
-import './orders';
+import './demands';
 import './products';
 import './project';
 import './reports';

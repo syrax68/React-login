@@ -117,7 +117,7 @@ const board = {
       isSubscribed: true,
       listId: '5e849c2b38d238c33e516755',
       memberIds: ['5e887a62195cc5aef7e8ca5d'],
-      name: 'Update the customer API for payments'
+      name: 'Update the contact API for payments'
     },
     {
       id: '5e849cb5d0c6e8894451fdfa',

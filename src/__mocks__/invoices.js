@@ -6,7 +6,7 @@ mock.onGet('/api/invoices').reply(() => {
     {
       id: '5ecb868d0f437390ef3ac62c',
       currency: '$',
-      customer: {
+      contact: {
         email: 'contact@anahenisky.io',
         name: 'Ana Henisky'
       },
@@ -20,7 +20,7 @@ mock.onGet('/api/invoices').reply(() => {
     {
       id: '5ecb868ada8deedee0638502',
       currency: '$',
-      customer: {
+      contact: {
         email: 'sales@matt-jason.com',
         name: 'Matt Jason'
       },
@@ -35,7 +35,7 @@ mock.onGet('/api/invoices').reply(() => {
     {
       id: '5ecb868700aba84d0f1c0e48',
       currency: '$',
-      customer: {
+      contact: {
         email: 'support@terrythomas.io',
         name: 'Terry Thomas'
       },
@@ -50,7 +50,7 @@ mock.onGet('/api/invoices').reply(() => {
     {
       id: '5ecb8682038e1ddf4e868764',
       currency: '$',
-      customer: {
+      contact: {
         email: 'contact@triv-shopper.co.uk',
         name: 'Triv Shopper'
       },
@@ -71,7 +71,7 @@ mock.onGet('/api/invoices/1').reply(() => {
   const invoice = {
     id: '5ecb86785312dcc69b5799ad',
     currency: '$',
-    customer: {
+    contact: {
       address: '271 Richmond Rd, Grey Lynn, Auckland 1022, New Zealand',
       company: 'Countdown Grey Lynn',
       email: 'contact@anahenisky.io',
