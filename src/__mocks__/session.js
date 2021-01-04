@@ -1,8 +1,8 @@
 import moment from 'moment';
 import mock from 'src/utils/mock';
 
-mock.onGet('/api/projects/overview/projects').reply(() => {
-  const projects = [
+mock.onGet('/api/sessions/overview/sessions').reply(() => {
+  const sessions = [
     {
       id: '5e8dcf105a6732b3ed82cf7a',
       author: {
@@ -29,10 +29,10 @@ mock.onGet('/api/projects/overview/projects').reply(() => {
     }
   ];
 
-  return [200, { projects }];
+  return [200, { sessions }];
 });
 
-mock.onGet('/api/projects/overview/statistics').reply(200, {
+mock.onGet('/api/sessions/overview/statistics').reply(200, {
   statistics: {
     nextPayout: 4250,
     totalIncome: 12500,
@@ -41,8 +41,8 @@ mock.onGet('/api/projects/overview/statistics').reply(200, {
   }
 });
 
-mock.onGet('/api/projects/projects').reply(() => {
-  const projects = [
+mock.onGet('/api/sessions/sessions').reply(() => {
+  const sessions = [
     {
       id: '5e8dcef8f95685ce21f16f3d',
       author: {
@@ -183,11 +183,11 @@ mock.onGet('/api/projects/projects').reply(() => {
     }
   ];
 
-  return [200, { projects }];
+  return [200, { sessions }];
 });
 
-mock.onGet('/api/projects/projects/1').reply(() => {
-  const project = {
+mock.onGet('/api/sessions/sessions/1').reply(() => {
+  const session = {
     id: '5e8dcf076c50b9d8e756a5a2',
     activities: [
       {
@@ -197,7 +197,7 @@ mock.onGet('/api/projects/projects/1').reply(() => {
           .toDate()
           .getTime(),
         description: 'has uploaded a new file',
-        subject: 'Project author',
+        subject: 'Session author',
         type: 'upload_file'
       },
       {
@@ -226,8 +226,8 @@ mock.onGet('/api/projects/projects/1').reply(() => {
           .subtract(2, 'days')
           .toDate()
           .getTime(),
-        description: 'raised the project budget',
-        subject: 'Project author',
+        description: 'raised the session budget',
+        subject: 'Session author',
         type: 'price_change'
       },
       {
@@ -298,7 +298,7 @@ Develop the web app screens for our product called "PDFace". Please look at the 
 
 There's not many screens we need designed, but there will be modals and various other system triggered events that will need to be considered.
 
-The project has been created in Sketch so let me know if there are any problems opening this project and I'll try to convert into a usable file.
+The session has been created in Sketch so let me know if there are any problems opening this project and I'll try to convert into a usable file.
     `,
     endDate: moment()
       .add(14, 'days')
@@ -405,5 +405,5 @@ The project has been created in Sketch so let me know if there are any problems 
       .getTime()
   };
 
-  return [200, { project }];
+  return [200, { session }];
 });

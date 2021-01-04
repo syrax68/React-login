@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const NewProjects = ({ className, ...rest }) => {
+const NewSessions = ({ className, ...rest }) => {
   const classes = useStyles();
   const data = {
     value: 12,
@@ -48,7 +48,7 @@ const NewProjects = ({ className, ...rest }) => {
           variant="overline"
           color="textSecondary"
         >
-          New projects
+          New sessions
         </Typography>
         <Box
           display="flex"
@@ -78,8 +78,8 @@ const NewProjects = ({ className, ...rest }) => {
   );
 };
 
-NewProjects.propTypes = {
+NewSessions.propTypes = {
   className: PropTypes.string
 };
 
-export default NewProjects;
+export default NewSessions;

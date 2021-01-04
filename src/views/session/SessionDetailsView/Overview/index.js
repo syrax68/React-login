@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   root: {}
 }));
 
-const Overview = ({ className, project, ...rest }) => {
+const Overview = ({ className, session, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -31,9 +31,9 @@ const Overview = ({ className, project, ...rest }) => {
         xl={9}
         xs={12}
       >
-        <Brief project={project} />
+        <Brief session={session} />
         <Box mt={3}>
-          <Files files={project.files} />
+          <Files files={session.files} />
         </Box>
       </Grid>
       <Grid
@@ -43,9 +43,9 @@ const Overview = ({ className, project, ...rest }) => {
         xs={12}
       >
         <Box mb={3}>
-          <Metadata project={project} />
+          <Metadata session={session} />
         </Box>
-        <Members members={project.members} />
+        <Members members={session.members} />
       </Grid>
     </Grid>
   );
@@ -53,7 +53,7 @@ const Overview = ({ className, project, ...rest }) => {
 
 Overview.propTypes = {
   className: PropTypes.string,
-  project: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired
 };
 
 export default Overview;

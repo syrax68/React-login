@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Header = ({ className, project, ...rest }) => {
+const Header = ({ className, session, ...rest }) => {
   const classes = useStyles();
   const [isApplyModalOpen, setApplyModalOpen] = useState(false);
 
@@ -62,7 +62,7 @@ const Header = ({ className, project, ...rest }) => {
           variant="h3"
           color="textPrimary"
         >
-          {project.title}
+          {session.title}
         </Typography>
         <Box
           mx={-2}
@@ -76,14 +76,14 @@ const Header = ({ className, project, ...rest }) => {
               fontSize="small"
               className={classes.badgeIcon}
             >
-              {project.isActive ? <CheckIcon /> : <AlertIcon /> }
+              {session.isActive ? <CheckIcon /> : <AlertIcon /> }
             </SvgIcon>
             <Typography
               variant="body2"
               color="inherit"
               component="span"
             >
-              {project.isActive ? 'Active' : 'Inactive'}
+              {session.isActive ? 'Active' : 'Inactive'}
             </Typography>
           </div>
           <div className={classes.badge}>
@@ -98,7 +98,7 @@ const Header = ({ className, project, ...rest }) => {
               color="inherit"
               component="span"
             >
-              {`Deadline ${moment(project.endDate).fromNow()}`}
+              {`Deadline ${moment(session.endDate).fromNow()}`}
             </Typography>
           </div>
         </Box>
@@ -128,7 +128,7 @@ const Header = ({ className, project, ...rest }) => {
           Apply for a role
         </Button>
         <ApplyModal
-          author={project.author}
+          author={session.author}
           onApply={handleApplyModalClose}
           onClose={handleApplyModalClose}
           open={isApplyModalOpen}
@@ -140,7 +140,7 @@ const Header = ({ className, project, ...rest }) => {
 
 Header.propTypes = {
   className: PropTypes.string,
-  project: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired
 };
 
 export default Header;

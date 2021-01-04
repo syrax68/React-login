@@ -231,28 +231,28 @@ const routes = [
       },
       {
         exact: true,
-        path: '/app/projects/overview',
-        component: lazy(() => import('src/views/project/OverviewView'))
+        path: '/app/sessions/overview',
+        component: lazy(() => import('src/views/session/OverviewView'))
       },
       {
         exact: true,
-        path: '/app/projects/browse',
-        component: lazy(() => import('src/views/project/ProjectBrowseView'))
+        path: '/app/sessions/browse',
+        component: lazy(() => import('src/views/session/SessionBrowseView'))
       },
       {
         exact: true,
-        path: '/app/projects/create',
-        component: lazy(() => import('src/views/project/ProjectCreateView'))
+        path: '/app/sessions/create',
+        component: lazy(() => import('src/views/session/SessionCreateView'))
       },
       {
         exact: true,
-        path: '/app/projects/:id',
-        component: lazy(() => import('src/views/project/ProjectDetailsView'))
+        path: '/app/sessions/:id',
+        component: lazy(() => import('src/views/session/SessionDetailsView'))
       },
       {
         exact: true,
-        path: '/app/projects',
-        component: () => <Redirect to="/app/projects/browse" />
+        path: '/app/sessions',
+        component: () => <Redirect to="/app/sessions/browse" />
       },
       {
         exact: true,

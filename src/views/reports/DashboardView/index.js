@@ -6,8 +6,8 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Header from './Header';
-import LatestProjects from './LatestProjects';
-import NewProjects from './NewProjects';
+import LatestSessions from './LatestSessions';
+import NewSessions from './NewSessions';
 import PerformanceOverTime from './PerformanceOverTime';
 import RealTime from './RealTime';
 import RoiPerContact from './RoiPerContact';
@@ -52,7 +52,7 @@ const DashboardView = () => {
             sm={6}
             xs={12}
           >
-            <NewProjects />
+            <NewSessions />
           </Grid>
           <Grid
             item
@@ -98,7 +98,7 @@ const DashboardView = () => {
             xl={8}
             xs={12}
           >
-            <LatestProjects />
+            <LatestSessions />
           </Grid>
         </Grid>
       </Container>

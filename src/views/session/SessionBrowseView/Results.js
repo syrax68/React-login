@@ -21,7 +21,7 @@ import {
 } from '@material-ui/lab';
 import ViewModuleIcon from '@material-ui/icons/ViewModule';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ProjectCard from 'src/components/ProjectCard';
+import SessionCard from 'src/components/SessionCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Results = ({ className, projects, ...rest }) => {
+const Results = ({ className, sessions, ...rest }) => {
   const classes = useStyles();
   const sortRef = useRef(null);
   const [openSort, setOpenSort] = useState(false);
@@ -87,9 +87,9 @@ const Results = ({ className, projects, ...rest }) => {
         >
           Showing
           {' '}
-          {projects.length}
+          {sessions.length}
           {' '}
-          projects
+          sessions
         </Typography>
         <Box
           display="flex"
@@ -119,15 +119,15 @@ const Results = ({ className, projects, ...rest }) => {
         container
         spacing={3}
       >
-        {projects.map((project) => (
+        {sessions.map((session) => (
           <Grid
             item
-            key={project.id}
+            key={session.id}
             md={mode === 'grid' ? 4 : 12}
             sm={mode === 'grid' ? 6 : 12}
             xs={12}
           >
-            <ProjectCard project={project} />
+            <SessionCard session={session} />
           </Grid>
         ))}
       </Grid>
@@ -161,7 +161,7 @@ const Results = ({ className, projects, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  projects: PropTypes.array.isRequired
+  sessions: PropTypes.array.isRequired
 };
 
 export default Results;

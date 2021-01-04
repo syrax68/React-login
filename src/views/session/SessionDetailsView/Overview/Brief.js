@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Brief = ({ className, project, ...rest }) => {
+const Brief = ({ className, session, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -44,13 +44,13 @@ const Brief = ({ className, project, ...rest }) => {
               variant="subtitle2"
               color="textSecondary"
             >
-              Project Name
+              Session Name
             </Typography>
             <Typography
               variant="h6"
               color="textPrimary"
             >
-              {project.title}
+              {session.title}
             </Typography>
             <Box mt={3}>
               <Typography
@@ -60,7 +60,7 @@ const Brief = ({ className, project, ...rest }) => {
                 Tags
               </Typography>
               <Box mt={1}>
-                {project.tags.map((tag) => (
+                {session.tags.map((tag) => (
                   <Chip
                     key={tag}
                     variant="outlined"
@@ -79,7 +79,7 @@ const Brief = ({ className, project, ...rest }) => {
             Description
           </Typography>
           <Markdown
-            source={project.description}
+            source={session.description}
             className={classes.markdown}
           />
         </Box>
@@ -90,7 +90,7 @@ const Brief = ({ className, project, ...rest }) => {
 
 Brief.propTypes = {
   className: PropTypes.string,
-  project: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired
 };
 
 export default Brief;

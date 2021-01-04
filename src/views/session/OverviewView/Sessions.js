@@ -16,7 +16,7 @@ import {
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import axios from 'src/utils/axios';
 import useIsMountedRef from 'src/hooks/useIsMountedRef';
-import ProjectCard from 'src/components/ProjectCard';
+import SessionCard from 'src/components/SessionCard';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -34,17 +34,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Projects = ({ className, ...rest }) => {
+const Sessions = ({ className, ...rest }) => {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [projects, setProjects] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
-  const getProjects = useCallback(async () => {
+  const getSessions = useCallback(async () => {
     try {
-      const response = await axios.get('/api/projects/overview/projects');
+      const response = await axios.get('/api/sessions/overview/sessions');
 
       if (isMountedRef.current) {
-        setProjects(response.data.projects);
+        setSessions(response.data.sessions);
       }
     } catch (err) {
       console.error(err);
@@ -52,8 +52,8 @@ const Projects = ({ className, ...rest }) => {
   }, [isMountedRef]);
 
   useEffect(() => {
-    getProjects();
-  }, [getProjects]);
+    getSessions();
+  }, [getSessions]);
 
   return (
     <div
@@ -71,11 +71,11 @@ const Projects = ({ className, ...rest }) => {
           variant="h5"
           color="textPrimary"
         >
-          Active Projects
+          Active Sessions
         </Typography>
         <Button
           component={RouterLink}
-          to="/app/projects/browse"
+          to="/app/sessions/browse"
           endIcon={<KeyboardArrowRightIcon />}
         >
           See all
@@ -85,15 +85,15 @@ const Projects = ({ className, ...rest }) => {
         container
         spacing={3}
       >
-        {projects.map((project) => (
+        {sessions.map((session) => (
           <Grid
             item
-            key={project.id}
+            key={session.id}
             md={4}
             sm={6}
             xs={12}
           >
-            <ProjectCard project={project} />
+            <SessionCard session={session} />
           </Grid>
         ))}
       </Grid>
@@ -101,8 +101,8 @@ const Projects = ({ className, ...rest }) => {
   );
 };
 
-Projects.propTypes = {
+Sessions.propTypes = {
   className: PropTypes.string
 };
 
-export default Projects;
+export default Sessions;

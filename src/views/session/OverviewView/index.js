@@ -8,7 +8,7 @@ import Page from 'src/components/Page';
 import Header from './Header';
 import Statistics from './Statistics';
 import Notifications from './Notifications';
-import Projects from './Projects';
+import Sessions from './Sessions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +35,7 @@ const OverviewView = () => {
           <Notifications />
         </Box>
         <Box mt={6}>
-          <Projects />
+          <Sessions />
         </Box>
       </Container>
     </Page>

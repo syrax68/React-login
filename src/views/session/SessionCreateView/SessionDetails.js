@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectDetails = ({
+const SessionDetails = ({
   className,
   onBack,
   onNext,
@@ -46,14 +46,14 @@ const ProjectDetails = ({
   return (
     <Formik
       initialValues={{
-        projectName: '',
+        sessionName: '',
         tags: ['Full-Time'],
         startDate: new Date(),
         endDate: new Date(),
         submit: null
       }}
       validationSchema={Yup.object().shape({
-        projectName: Yup.string().min(3, 'Must be at least 3 characters').max(255).required('Required'),
+        sessionName: Yup.string().min(3, 'Must be at least 3 characters').max(255).required('Required'),
         tags: Yup.array(),
         startDate: Yup.date(),
         endDate: Yup.date()
@@ -114,14 +114,14 @@ const ProjectDetails = ({
           </Box>
           <Box mt={2}>
             <TextField
-              error={Boolean(touched.projectName && errors.projectName)}
+              error={Boolean(touched.sessionName && errors.sessionName)}
               fullWidth
-              helperText={touched.projectName && errors.projectName}
-              label="Project Name"
-              name="projectName"
+              helperText={touched.sessionName && errors.sessionName}
+              label="Session Name"
+              name="sessionName"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.projectName}
+              value={values.sessionName}
               variant="outlined"
             />
             <Box
@@ -245,15 +245,15 @@ const ProjectDetails = ({
   );
 };
 
-ProjectDetails.propTypes = {
+SessionDetails.propTypes = {
   className: PropTypes.string,
   onNext: PropTypes.func,
   onBack: PropTypes.func
 };
 
-ProjectDetails.defaultProps = {
+SessionDetails.defaultProps = {
   onNext: () => {},
   onBack: () => {}
 };
 
-export default ProjectDetails;
+export default SessionDetails;

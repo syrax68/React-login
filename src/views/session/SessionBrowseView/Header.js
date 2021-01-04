@@ -46,10 +46,10 @@ const Header = ({ className, ...rest }) => {
           <Link
             variant="body1"
             color="inherit"
-            to="/app/projects"
+            to="/app/sessions"
             component={RouterLink}
           >
-            Projects
+            Sessions
           </Link>
           <Typography
             variant="body1"
@@ -69,7 +69,7 @@ const Header = ({ className, ...rest }) => {
         <Button
           color="secondary"
           component={RouterLink}
-          to="/app/projects/create"
+          to="/app/sessions/create"
           variant="contained"
           startIcon={
             <SvgIcon fontSize="small">
@@ -77,7 +77,7 @@ const Header = ({ className, ...rest }) => {
             </SvgIcon>
           }
         >
-          Add new project
+          Add new session
         </Button>
       </Grid>
     </Grid>

@@ -158,25 +158,25 @@ const sections = [
         ]
       },
       {
-        title: 'Projects Platform',
-        href: '/app/projects',
+        title: 'Sessions Platform',
+        href: '/app/sessions',
         icon: BriefcaseIcon,
         items: [
           {
             title: 'Overview',
-            href: '/app/projects/overview'
+            href: '/app/sessions/overview'
           },
           {
-            title: 'Browse Projects',
-            href: '/app/projects/browse'
+            title: 'Browse sessions',
+            href: '/app/sessions/browse'
           },
           {
-            title: 'Create Project',
-            href: '/app/projects/create'
+            title: 'Create Session',
+            href: '/app/sessions/create'
           },
           {
-            title: 'View Project',
-            href: '/app/projects/1'
+            title: 'View Session',
+            href: '/app/sessions/1'
           },
           {
             title: 'Calendar',

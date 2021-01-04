@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectDescription = ({
+const SessionDescription = ({
   className,
   onBack,
   onComplete,
@@ -122,15 +122,15 @@ const ProjectDescription = ({
   );
 };
 
-ProjectDescription.propTypes = {
+SessionDescription.propTypes = {
   className: PropTypes.string,
   onComplete: PropTypes.func,
   onBack: PropTypes.func
 };
 
-ProjectDescription.defaultProps = {
+SessionDescription.defaultProps = {
   onComplete: () => {},
   onBack: () => {}
 };
 
-export default ProjectDescription;
+export default SessionDescription;

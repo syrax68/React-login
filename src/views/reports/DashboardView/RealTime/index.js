@@ -91,7 +91,7 @@ const RealTime = ({ className, ...rest }) => {
 
   const pages = [
     {
-      pathname: '/app/projects',
+      pathname: '/app/sessions',
       views: '24'
     },
     {

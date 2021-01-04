@@ -50,17 +50,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const LatestProjects = ({ className, ...rest }) => {
+const LatestSessions = ({ className, ...rest }) => {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [projects, setProjects] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
-  const getProjects = useCallback(async () => {
+  const getSessions = useCallback(async () => {
     try {
-      const response = await axios.get('/api/reports/latest-projects');
+      const response = await axios.get('/api/reports/latest-sessions');
 
       if (isMountedRef.current) {
-        setProjects(response.data.projects);
+        setSessions(response.data.sessions);
       }
     } catch (err) {
       console.error(err);
@@ -68,8 +68,8 @@ const LatestProjects = ({ className, ...rest }) => {
   }, [isMountedRef]);
 
   useEffect(() => {
-    getProjects();
-  }, [getProjects]);
+    getSessions();
+  }, [getSessions]);
 
   return (
     <Card
@@ -78,7 +78,7 @@ const LatestProjects = ({ className, ...rest }) => {
     >
       <CardHeader
         action={<GenericMoreButton />}
-        title="Latest Projects"
+        title="Latest Sessions"
       />
       <Divider />
       <PerfectScrollbar>
@@ -117,13 +117,13 @@ const LatestProjects = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {projects.map((project) => (
+              {sessions.map((session) => (
                 <TableRow
                   hover
-                  key={project.id}
+                  key={session.id}
                 >
                   <TableCell>
-                    {project.title}
+                    {session.title}
                   </TableCell>
                   <TableCell>
                     <Box
@@ -132,20 +132,20 @@ const LatestProjects = ({ className, ...rest }) => {
                     >
                       <Avatar
                         alt="Author"
-                        src={project.author.avatar}
+                        src={session.author.avatar}
                       >
-                        {getInitials(project.author.name)}
+                        {getInitials(session.author.name)}
                       </Avatar>
                       <Box ml={1}>
-                        {project.author.name}
+                        {session.author.name}
                       </Box>
                     </Box>
                   </TableCell>
                   <TableCell>
-                    {numeral(project.budget).format(`${project.currency}0,0.00`)}
+                    {numeral(session.budget).format(`${session.currency}0,0.00`)}
                   </TableCell>
                   <TableCell>
-                    {project.technologies.map((technology) => (
+                    {session.technologies.map((technology) => (
                       <img
                         alt="Tech"
                         key={technology}
@@ -155,7 +155,7 @@ const LatestProjects = ({ className, ...rest }) => {
                     ))}
                   </TableCell>
                   <TableCell align="right">
-                    {moment(project.createdAt).format('DD MMM, YYYY')}
+                    {moment(session.createdAt).format('DD MMM, YYYY')}
                   </TableCell>
                 </TableRow>
               ))}
@@ -171,7 +171,7 @@ const LatestProjects = ({ className, ...rest }) => {
         <Button
           component={RouterLink}
           size="small"
-          to="/app/projects"
+          to="/app/sessions"
           endIcon={<NavigateNextIcon />}
         >
           See all
@@ -181,8 +181,8 @@ const LatestProjects = ({ className, ...rest }) => {
   );
 };
 
-LatestProjects.propTypes = {
+LatestSessions.propTypes = {
   className: PropTypes.string
 };
 
-export default LatestProjects;
+export default LatestSessions;

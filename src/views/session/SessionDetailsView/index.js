@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectDetailsView = () => {
+const SessionDetailsView = () => {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
   const [currentTab, setCurrentTab] = useState('overview');
-  const [project, setProject] = useState(null);
+  const [session, setSession] = useState(null);
 
   const tabs = [
     { value: 'overview', label: 'Overview' },
@@ -46,12 +46,12 @@ const ProjectDetailsView = () => {
     setCurrentTab(value);
   };
 
-  const getProject = useCallback(async () => {
+  const getSession = useCallback(async () => {
     try {
-      const response = await axios.get('/api/projects/projects/1');
+      const response = await axios.get('/api/sessions/sessions/1');
 
       if (isMountedRef.current) {
-        setProject(response.data.project);
+        setSession(response.data.session);
       }
     } catch (err) {
       console.error(err);
@@ -59,20 +59,20 @@ const ProjectDetailsView = () => {
   }, [isMountedRef]);
 
   useEffect(() => {
-    getProject();
-  }, [getProject]);
+    getSession();
+  }, [getSession]);
 
-  if (!project) {
+  if (!session) {
     return null;
   }
 
   return (
     <Page
       className={classes.root}
-      title="Project Details"
+      title="session Details"
     >
       <Container maxWidth="lg">
-        <Header project={project} />
+        <Header session={session} />
         <Box mt={3}>
           <Tabs
             onChange={handleTabsChange}
@@ -92,14 +92,14 @@ const ProjectDetailsView = () => {
         </Box>
         <Divider />
         <Box mt={3}>
-          {currentTab === 'overview' && <Overview project={project} />}
-          {currentTab === 'reviews' && <Reviews reviews={project.reviews} />}
-          {currentTab === 'activity' && <Activities activities={project.activities} />}
-          {currentTab === 'applicants' && <Applicants applicants={project.applicants} />}
+          {currentTab === 'overview' && <Overview session={session} />}
+          {currentTab === 'reviews' && <Reviews reviews={session.reviews} />}
+          {currentTab === 'activity' && <Activities activities={session.activities} />}
+          {currentTab === 'applicants' && <Applicants applicants={session.applicants} />}
         </Box>
       </Container>
     </Page>
   );
 }
 
-export default ProjectDetailsView;
+export default SessionDetailsView;

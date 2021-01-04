@@ -40,10 +40,10 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectCard = ({ className, project, ...rest }) => {
+const SessionCard = ({ className, session, ...rest }) => {
   const classes = useStyles();
-  const [isLiked, setLiked] = useState(project.isLiked);
-  const [likesCount, setLikesCount] = useState(project.likesCount);
+  const [isLiked, setLiked] = useState(session.isLiked);
+  const [likesCount, setLikesCount] = useState(session.likesCount);
 
   const handleLike = () => {
     setLiked(true);
@@ -63,7 +63,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
       <Box p={3}>
         <CardMedia
           className={classes.image}
-          image={project.image}
+          image={session.image}
         />
         <Box
           display="flex"
@@ -72,9 +72,9 @@ const ProjectCard = ({ className, project, ...rest }) => {
         >
           <Avatar
             alt="Author"
-            src={project.author.avatar}
+            src={session.author.avatar}
           >
-            {getInitials(project.author.name)}
+            {getInitials(session.author.name)}
           </Avatar>
           <Box ml={2}>
             <Link
@@ -83,7 +83,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
               to="#"
               variant="h5"
             >
-              {project.title}
+              {session.title}
             </Link>
             <Typography
               variant="body2"
@@ -97,12 +97,12 @@ const ProjectCard = ({ className, project, ...rest }) => {
                 to="#"
                 variant="h6"
               >
-                {project.author.name}
+                {session.author.name}
               </Link>
               {' '}
               | Updated
               {' '}
-              {moment(project.updatedAt).fromNow()}
+              {moment(session.updatedAt).fromNow()}
             </Typography>
           </Box>
         </Box>
@@ -115,7 +115,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
           color="textSecondary"
           variant="body2"
         >
-          {project.caption}
+          {session.caption}
         </Typography>
       </Box>
       <Box
@@ -133,7 +133,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
               variant="h5"
               color="textPrimary"
             >
-              {numeral(project.budget).format(`${project.currency}0,0.00`)}
+              {numeral(session.budget).format(`${session.currency}0,0.00`)}
             </Typography>
             <Typography
               variant="body2"
@@ -147,7 +147,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
               variant="h5"
               color="textPrimary"
             >
-              {project.location}
+              {session.location}
             </Typography>
             <Typography
               variant="body2"
@@ -161,7 +161,7 @@ const ProjectCard = ({ className, project, ...rest }) => {
               variant="h5"
               color="textPrimary"
             >
-              {project.type}
+              {session.type}
             </Typography>
             <Typography
               variant="body2"
@@ -213,11 +213,11 @@ const ProjectCard = ({ className, project, ...rest }) => {
           variant="subtitle2"
           color="textSecondary"
         >
-          {project.membersCount}
+          {session.membersCount}
         </Typography>
         <Box flexGrow={1} />
         <Rating
-          value={project.rating}
+          value={session.rating}
           size="small"
           readOnly
         />
@@ -226,9 +226,9 @@ const ProjectCard = ({ className, project, ...rest }) => {
   );
 };
 
-ProjectCard.propTypes = {
+SessionCard.propTypes = {
   className: PropTypes.string,
-  project: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired
 };
 
-export default ProjectCard;
+export default SessionCard;

@@ -24,17 +24,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectBrowseView = () => {
+const SessionBrowseView = () => {
   const classes = useStyles();
   const isMountedRef = useIsMountedRef();
-  const [projects, setProjects] = useState([]);
+  const [sessions, setSessions] = useState([]);
 
-  const getProjects = useCallback(async () => {
+  const getSessions = useCallback(async () => {
     try {
-      const response = await axios.get('/api/projects/projects');
+      const response = await axios.get('/api/sessions/sessions');
   
       if (isMountedRef.current) {
-        setProjects(response.data.projects);
+        setSessions(response.data.sessions);
       }
     } catch (err) {
       console.error(err);
@@ -42,13 +42,13 @@ const ProjectBrowseView = () => {
   }, [isMountedRef]);
 
   useEffect(() => {
-    getProjects();
-  }, [getProjects]);
+    getSessions();
+  }, [getSessions]);
 
   return (
     <Page
       className={classes.root}
-      title="Project List"
+      title="Session List"
     >
       <Container maxWidth="lg">
         <Header />
@@ -56,11 +56,11 @@ const ProjectBrowseView = () => {
           <Filter />
         </Box>
         <Box mt={6}>
-          <Results projects={projects} />
+          <Results sessions={sessions} />
         </Box>
       </Container>
     </Page>
   );
 }
 
-export default ProjectBrowseView;
+export default SessionBrowseView;

@@ -37,7 +37,7 @@ const Members = ({ className, members, ...rest }) => {
     >
       <CardHeader
         className={classes.header}
-        title="Project members"
+        title="Session members"
         titleTypographyProps={{
           variant: 'overline'
         }}

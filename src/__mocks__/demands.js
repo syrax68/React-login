@@ -189,7 +189,7 @@ mock.onGet('/api/demands/1').reply(() => {
         id: '5ecb8abbdd6dfb1f9d6bf98b',
         billingCycle: 'monthly',
         currency: '$',
-        name: 'Project Points',
+        name: 'Session Points',
         quantity: 25,
         unitAmount: 50.25
       },

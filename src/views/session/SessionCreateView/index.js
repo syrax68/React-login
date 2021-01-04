@@ -31,8 +31,8 @@ import {
 } from 'react-feather';
 import Page from 'src/components/Page';
 import UserDetails from './UserDetails';
-import ProjectDetails from './ProjectDetails';
-import ProjectDescription from './ProjectDescription';
+import SessionDetails from './SessionDetails';
+import SessionDescription from './SessionDescription';
 
 const steps = [
   {
@@ -40,11 +40,11 @@ const steps = [
     icon: UserIcon
   },
   {
-    label: 'Project Details',
+    label: 'Session Details',
     icon: BriefcaseIcon
   },
   {
-    label: 'Project Description',
+    label: 'Session Description',
     icon: FileIcon
   }
 ];
@@ -110,7 +110,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ProjectCreateView  = () => {
+const SessionCreateView  = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [completed, setCompleted] = useState(false);
@@ -130,7 +130,7 @@ const ProjectCreateView  = () => {
   return (
     <Page
       className={classes.root}
-      title="Project Create"
+      title="Session Create"
     >
       <Container maxWidth="lg">
         <Box mb={3}>
@@ -150,7 +150,7 @@ const ProjectCreateView  = () => {
               variant="body1"
               color="textPrimary"
             >
-              Projects
+              Sessions
             </Typography>
           </Breadcrumbs>
           <Typography
@@ -193,13 +193,13 @@ const ProjectCreateView  = () => {
                     <UserDetails onNext={handleNext} />
                   )}
                   {activeStep === 1 && (
-                    <ProjectDetails
+                    <SessionDetails
                       onBack={handleBack}
                       onNext={handleNext}
                     />
                   )}
                   {activeStep === 2 && (
-                    <ProjectDescription
+                    <SessionDescription
                       onBack={handleBack}
                       onComplete={handleComplete}
                     />
@@ -251,9 +251,9 @@ const ProjectCreateView  = () => {
                     variant="contained"
                     color="secondary"
                     component={RouterLink}
-                    to="/app/projects/1"
+                    to="/app/sessions/1"
                   >
-                    View your project
+                    View your Session
                   </Button>
                 </Box>
               </Box>
@@ -265,4 +265,4 @@ const ProjectCreateView  = () => {
   );
 };
 
-export default ProjectCreateView;
+export default SessionCreateView;

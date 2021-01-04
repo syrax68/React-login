@@ -8,7 +8,7 @@ import './mail';
 import './notifications';
 import './demands';
 import './products';
-import './project';
+import './session';
 import './reports';
 import './search';
 import './social';

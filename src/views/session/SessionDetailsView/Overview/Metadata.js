@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Metadata = ({ className, project, ...rest }) => {
+const Metadata = ({ className, session, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -44,10 +44,10 @@ const Metadata = ({ className, project, ...rest }) => {
           <Avatar
             alt="Author"
             component={RouterLink}
-            src={project.author.avatar}
+            src={session.author.avatar}
             to="#"
           >
-            {getInitials(project.author.name)}
+            {getInitials(session.author.name)}
           </Avatar>
         )}
         className={classes.header}
@@ -60,7 +60,7 @@ const Metadata = ({ className, project, ...rest }) => {
             underline="none"
             variant="h6"
           >
-            {project.author.name}
+            {session.author.name}
           </Link>
         )}
         title={(
@@ -90,7 +90,7 @@ const Metadata = ({ className, project, ...rest }) => {
               variant="h6"
               color="textSecondary"
             >
-              {moment(project.endDate).format('DD MMM YYYY')}
+              {moment(session.endDate).format('DD MMM YYYY')}
             </Typography>
           </ListItem>
           <ListItem
@@ -108,7 +108,7 @@ const Metadata = ({ className, project, ...rest }) => {
               variant="h6"
               color="textSecondary"
             >
-              {numeral(project.budget).format(`${project.currency}0,0.00`)}
+              {numeral(session.budget).format(`${session.currency}0,0.00`)}
             </Typography>
           </ListItem>
           <ListItem
@@ -126,7 +126,7 @@ const Metadata = ({ className, project, ...rest }) => {
               variant="h6"
               color="textSecondary"
             >
-              {moment(project.updatedAt).format('DD MMM YYYY')}
+              {moment(session.updatedAt).format('DD MMM YYYY')}
             </Typography>
           </ListItem>
         </List>
@@ -137,7 +137,7 @@ const Metadata = ({ className, project, ...rest }) => {
 
 Metadata.propTypes = {
   className: PropTypes.string,
-  project: PropTypes.object.isRequired
+  session: PropTypes.object.isRequired
 };
 
 export default Metadata;
