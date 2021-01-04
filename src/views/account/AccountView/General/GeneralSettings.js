@@ -339,7 +339,7 @@ const GeneralSettings = ({ className, user, ...rest }) => {
                     variant="body2"
                     color="textSecondary"
                   >
-                    Toggling this will let you show your trainer profil
+                    Toggling this will let you show your trainer profile
                   </Typography>
                   <Switch
                     checked={values.activeTrainer}
