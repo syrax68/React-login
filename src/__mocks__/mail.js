@@ -129,7 +129,7 @@ Ekaterina Tankova
     labelIds: [],
     subject: 'Amazing work',
     message: `
-Hey, nice projects! I really liked the one in react. What's your quote on kinda similar project?
+Hey, nice sessions! I really liked the one in react. What's your quote on kinda similar project?
     `,
     from: {
       name: 'Adam Denisov',

@@ -48,7 +48,7 @@ const Statistics = ({ className, ...rest }) => {
 
   const getStatistics = useCallback(async () => {
     try {
-      const response = await axios.get('/api/projects/overview/statistics');
+      const response = await axios.get('/api/sessions/overview/statistics');
   
       if (isMountedRef.current) {
         setStatistics(response.data.statistics);

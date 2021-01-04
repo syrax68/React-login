@@ -15,17 +15,17 @@ const typeOptions = [
   {
     value: 'freelancer',
     title: 'I\'m a freelancer',
-    description: 'I\'m looking for teamates to join in a personal project'
+    description: 'I\'m looking for teamates to join in a personal session'
   },
   {
-    value: 'projectOwner',
-    title: 'I’m a project owner',
-    description: 'I\'m looking for freelancer or contractors to take care of my project'
+    value: 'sessionOwner',
+    title: 'I’m a session owner',
+    description: 'I\'m looking for freelancer or contractors to take care of my session'
   },
   {
     value: 'affiliate',
     title: 'I want to join affiliate',
-    description: 'I\'m looking for freelancer or contractors to take care of my project'
+    description: 'I\'m looking for freelancer or contractors to take care of my session'
   }
 ];
 

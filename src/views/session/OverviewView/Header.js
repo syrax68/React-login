@@ -61,7 +61,7 @@ const Header = ({ className, ...rest }) => {
             variant="subtitle1"
             color="textPrimary"
           >
-            Here’s what’s happening with your projects today
+            Here’s what’s happening with your sessions today
           </Typography>
           <Box mt={2}>
             <Button

@@ -315,7 +315,7 @@ const GeneralSettings = ({ className, user, ...rest }) => {
                     color="textSecondary"
                   >
                     Toggling this will let your teammates know that you are available
-                    for acquiring new projects
+                    for acquiring new sessions
                   </Typography>
                   <Switch
                     checked={values.canHire}

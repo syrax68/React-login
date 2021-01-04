@@ -63,7 +63,7 @@ const ApplyModal = ({
           variant="h3"
           color="textPrimary"
         >
-          The project requires an introduction
+          The session requires an introduction
         </Typography>
         <Typography
           align="center"
@@ -82,7 +82,7 @@ const ApplyModal = ({
             label="Short Note"
             multiline
             onChange={handleChange}
-            placeholder="What excites you about this project?"
+            placeholder="What excites you about this session?"
             rows={5}
             value={value}
             variant="outlined"

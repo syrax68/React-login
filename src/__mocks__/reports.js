@@ -205,8 +205,8 @@ mock.onGet('/api/reports/latest-demands').reply(() => {
   return [200, { demands }];
 });
 
-mock.onGet('/api/reports/latest-projects').reply(() => {
-  const projects = [
+mock.onGet('/api/reports/latest-sessions').reply(() => {
+  const sessions = [
     {
       id: '5eff24e675e7b3cba23e4be7',
       author: {
@@ -294,7 +294,7 @@ mock.onGet('/api/reports/latest-projects').reply(() => {
     }
   ];
 
-  return [200, { projects }];
+  return [200, { sessions }];
 });
 
 mock.onGet('/api/reports/latest-tasks').reply(() => {
