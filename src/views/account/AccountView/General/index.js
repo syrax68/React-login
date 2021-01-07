@@ -6,7 +6,6 @@ import {
   Tab,
   Tabs,
 } from '@material-ui/core';
-
 import AccountDetails from './AccountDetails';
 import Notifications from '../Notifications';
 import Security from '../Security';
@@ -17,10 +16,10 @@ const General = (parameter) => {
 
   const [currentTab, setCurrentTab] = useState(parameter.parameter? parameter.parameter: 'account');
   const tabs = [
-    { value: 'account', label: 'Account Details' },
-    { value: 'notifications', label: 'Notifications' },
-    { value: 'security', label: 'Security' },
-    { value: 'subscription', label: 'Client Subscription' },
+    { value: 'account', label: 'Account Details', href: "/app/general/account" },
+    { value: 'notifications', label: 'Notifications' , href: "/app/general/account/notifications"},
+    { value: 'security', label: 'Security' , href: "/app/general/account/security"},
+    { value: 'subscription', label: 'Client Subscription', href:"/app/general/account/subscription" },
   ];
   
   useEffect(() => {
@@ -43,11 +42,12 @@ const General = (parameter) => {
           variant="scrollable"
         >
           {tabs.map((tab) => (
-            <Tab
-              key={tab.value}
-              label={tab.label}
-              value={tab.value}
-            />
+              <Tab
+                key={tab.value}
+                label={tab.label}
+                href={tab.href}
+                value={tab.value}
+              />  
           ))}
         </Tabs>
       </Box>
